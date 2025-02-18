@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "files.autoSave": "onFocusChange"
+    },
+    "extensions": {
+        "recommendations": [
+            "editorconfig.editorconfig"
+        ]
+    }
+}
