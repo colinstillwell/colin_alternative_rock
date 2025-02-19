@@ -96,7 +96,8 @@
             "andrewdavidblum.drupal-smart-snippets",
             "ikappas.composer",
             "mblode.twig-language-2",
-            "redhat.vscode-yaml"
+            "redhat.vscode-yaml",
+            "esbenp.prettier-vscode"
         ]
     }
 }
