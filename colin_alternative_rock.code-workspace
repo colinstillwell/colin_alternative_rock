@@ -5,15 +5,98 @@
         }
     ],
     "settings": {
+        /* Editor Settings from https://www.drupal.org/node/2918206. */
+        "breadcrumbs.enabled": true,
+        "css.validate": true,
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "full",
+        "editor.insertSpaces": true,
         "editor.formatOnPaste": true,
-        "editor.formatOnType": false,
         "editor.formatOnSave": true,
+        "editor.renderWhitespace": "boundary",
+        "editor.wordWrapColumn": 80,
+        "editor.wordWrap": "off",
+        "editor.detectIndentation": true,
+        "editor.rulers": [
+            80
+        ],
+        "files.associations": {
+            "*.inc": "php",
+            "*.module": "php",
+            "*.install": "php",
+            "*.theme": "php",
+            "*.profile": "php",
+            "*.tpl.php": "php",
+            "*.test": "php",
+            "*.php": "php",
+            "*.info": "ini"
+        },
+        "files.trimTrailingWhitespace": true,
+        "files.restoreUndoStack": false,
+        "files.insertFinalNewline": true,
+        "html.format.enable": true,
+        "html.format.wrapLineLength": 80,
+        "telemetry.telemetryLevel": "off",
+        "intelephense.environment.includePaths": [
+            "web/core/",
+            "web/core/includes/",
+            "vendor/"
+        ],
+        /* PHP Drupal Coding Standards Configuration (using PHP Sniffer & Beautifier) from https://www.drupal.org/node/2918206. */
+        "phpsab.snifferEnable": true,
+        "phpsab.standard": "Drupal,DrupalPractice",
+        "phpsab.snifferArguments": [
+            "--extensions=inc,theme,install,module,profile,php,phtml"
+        ],
+        /* Formatting from https://www.drupal.org/node/2918206. */
+        "phpsab.fixerEnable": true,
+        "phpsab.fixerArguments": [
+            "--extensions=inc,theme,install,module,profile,php,phtml"
+        ],
+        "[php]": {
+            "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+        },
+        /* PHP Validation from https://www.drupal.org/node/2918206. */
+        "php.validate.enable": true,
+        "php.validate.executablePath": "/opt/homebrew/bin/php",
+        "php.validate.run": "onType",
+        /* PHP Docblocks from https://www.drupal.org/node/2918206. */
+        "php-docblocker.gap": true,
+        "php-docblocker.useShortNames": true,
+        /* JavaScript Coding Standards and IntelliSense Configuration from https://www.drupal.org/node/2918206. */
+        "javascript.validate.enable": true,
+        "javascript.format.enable": true,
+        "eslint.format.enable": true,
+        "eslint.enable": true,
+        "prettier.configPath": "web/core/.prettierrc.json",
+        "eslint.workingDirectories": [
+            "./web"
+        ],
+        "[javascript]": {
+            "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        },
+        /* Composer from https://www.drupal.org/node/2918206. */
+        "composer.enabled": true,
+        "composer.executablePath": "/opt/homebrew/bin/composer",
+        /* Other settings. */
+        "editor.formatOnType": false,
         "editor.formatOnSaveMode": "file",
         "files.autoSave": "onFocusChange"
     },
     "extensions": {
         "recommendations": [
-            "editorconfig.editorconfig"
+            "editorconfig.editorconfig",
+            "valeryanm.vscode-phpsab",
+            "dbaeumer.vscode-eslint",
+            "neilbrayfield.php-docblocker",
+            "xdebug.php-debug",
+            "bmewburn.vscode-intelephense-client",
+            "stanislav.vscode-drupal",
+            "andrewdavidblum.drupal-smart-snippets",
+            "ikappas.composer",
+            "mblode.twig-language-2",
+            "redhat.vscode-yaml"
         ]
     }
 }
