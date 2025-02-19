@@ -1,0 +1,32 @@
+{
+  "name": "colin_alternative_rock",
+  "version": "1.0.0",
+  "description": "Spotify Showcase for CACI Digital Experience (formerly Cyber-Duck)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colinstillwell/colin_alternative_rock.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Colin Stillwell",
+    "email": "itsme@colinstillwell.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colinstillwell/colin_alternative_rock/issues"
+  },
+  "homepage": "https://github.com/colinstillwell/colin_alternative_rock#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-yml": "^1.17.0",
+    "prettier": "^3.5.1"
+  }
+}
