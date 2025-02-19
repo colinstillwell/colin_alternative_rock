@@ -1,6 +1,6 @@
 # Spotify Showcase for CACI Digital Experience (formerly Cyber-Duck)
 
-A Drupal 11 project demonstrating a custom Spotify integration module.
+A Drupal 11 project implementing a custom module for Spotify API integration.
 
 ## 🛠️ Prerequisites
 
@@ -35,6 +35,20 @@ https://colin-alternative-rock.ddev.site
 ## Notes
 
 This section highlights key technical decisions made during development.
+
+### Conventional Commits
+
+All commits in this project are prefixed with [master]. This is because I have globally configured Conventional Commits to integrate with Jira. If no ticket ID is provided (as in this case), the prefix defaults to the name of the branch I am working on.
+
+Conventional Commits help automate the creation of release notes, providing a structured approach to commit history.
+
+### Coding Standards
+
+The `colin_alternative_rock.code-workspace` file contains Visual Studio Code settings and recommended extensions to enforce Drupal coding standards. These settings are loosely based on [Drupal.org’s official standards](https://www.drupal.org/node/2918206) and demonstrate my understanding of best practices.
+
+I am aware that some of these settings would typically be configured per-user. I also have experience configuring this setup for PhpStorm, another widely used Drupal IDE.
+
+Additionally, files in the root directory, such as Node packages and dotfiles, help support this.
 
 ### Recipes
 
