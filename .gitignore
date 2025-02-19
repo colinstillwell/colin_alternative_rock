@@ -1,5 +1,21 @@
 # Drupal
-/web
+/web/.csslintrc
+/web/.eslintignore
+/web/.eslintrc.json
+/web/.ht.router.php
+/web/.htaccess
+/web/autoload.php
+/web/example.gitignore
+/web/index.php
+/web/INSTALL.txt
+/web/README.md
+/web/robots.txt
+/web/update.php
+/web/core
+/web/modules/README.txt
+/web/profiles/README.txt
+/web/sites
+/web/themes/README.txt
 
 # Composer
 /vendor
