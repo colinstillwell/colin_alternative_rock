@@ -5,6 +5,11 @@
         }
     ],
     "settings": {
+    /* Other settings. */
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnType": false,
+    "editor.formatOnSaveMode": "file",
+    "files.autoSave": "onFocusChange",
         /* Editor Settings from https://www.drupal.org/node/2918206. */
         "breadcrumbs.enabled": true,
         "css.validate": true,
@@ -79,10 +84,6 @@
         /* Composer from https://www.drupal.org/node/2918206. */
         "composer.enabled": true,
         "composer.executablePath": "/opt/homebrew/bin/composer",
-        /* Other settings. */
-        "editor.formatOnType": false,
-        "editor.formatOnSaveMode": "file",
-        "files.autoSave": "onFocusChange"
     },
     "extensions": {
         "recommendations": [
