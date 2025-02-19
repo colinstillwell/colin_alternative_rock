@@ -3,7 +3,5 @@
     "module": "CommonJS",
     "target": "ES6"
   },
-  "include": [
-    "web/core/misc"
-  ]
+  "include": ["web/core/misc"]
 }
