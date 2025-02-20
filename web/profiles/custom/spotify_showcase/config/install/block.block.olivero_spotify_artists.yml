@@ -9,9 +9,13 @@ dependencies:
 id: olivero_spotify_artists
 theme: olivero
 region: content
-weight: 0
+weight: -10
 plugin: spotify_artists
-settings: {}
+settings:
+  id: spotify_artists
+  label: 'Spotify Artists'
+  label_display: visible
+  provider: spotify_artist
 visibility:
   request_path:
     id: request_path
