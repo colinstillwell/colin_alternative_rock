@@ -6,6 +6,7 @@
  */
 
 use Drupal\node\Entity\Node;
+use Drupal\shortcut\Entity\Shortcut;
 
 /**
  * Implements hook_install().
@@ -23,4 +24,21 @@ function spotify_showcase_install(): void {
     'uid' => 1,
   ]);
   $node->save();
+
+  // Populate the default shortcut set.
+  $shortcut = Shortcut::create([
+    'shortcut_set' => 'default',
+    'title' => t('All Spotify Artists'),
+    'weight' => 0,
+    'link' => ['uri' => 'internal:/admin/content/spotify-artists'],
+  ]);
+  $shortcut->save();
+
+  $shortcut = Shortcut::create([
+    'shortcut_set' => 'default',
+    'title' => t('Add Spotify Artist'),
+    'weight' => 1,
+    'link' => ['uri' => 'internal:/admin/content/spotify-artists/add'],
+  ]);
+  $shortcut->save();
 }
