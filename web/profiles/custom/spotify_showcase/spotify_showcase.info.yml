@@ -3,6 +3,7 @@ description: 'Install with essential modules, settings and configurations for th
 type: profile
 core_version_requirement: ^11
 install:
+  - drupal:spotify_artist
   - drupal:big_pipe
   - drupal:block
   - drupal:breakpoint
@@ -19,7 +20,6 @@ install:
   - drupal:page_cache
   - drupal:path
   - drupal:shortcut
-  - drupal:spotify_artist
   - drupal:text
   - drupal:toolbar
   - drupal:user
