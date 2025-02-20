@@ -106,4 +106,11 @@ class SpotifyArtist extends ContentEntityBase {
     return parent::access($operation, $account, $return_as_object);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getSpotifyId() {
+    return $this->get('spotify_id')->value;
+  }
+
 }

@@ -47,9 +47,10 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
+    /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
-    $row['spotify_id'] = $entity->get('spotify_id')->value;
+    $row['spotify_id'] = $entity->getSpotifyId();
 
     return $row + parent::buildRow($entity);
   }
