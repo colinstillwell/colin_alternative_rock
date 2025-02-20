@@ -1,0 +1,5 @@
+spotify_artist.add_form:
+  route_name: entity.spotify_artist.add_form
+  title: 'Add Spotify Artist'
+  appears_on:
+    - entity.spotify_artist.collection

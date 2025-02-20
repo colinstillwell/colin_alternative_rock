@@ -1,0 +1,9 @@
+administer spotify artists:
+  title: 'Administer Spotify Artists'
+  description: 'Allow users to administer Spotify Artists.'
+  restrict access: true
+
+view spotify artists:
+  title: 'View Spotify Artists'
+  description: 'Allow users to view Spotify Artists.'
+  restrict access: true
