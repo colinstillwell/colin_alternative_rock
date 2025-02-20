@@ -51,7 +51,7 @@ class SpotifyArtistForm extends ContentEntityForm {
 
     // Check if the limit (20) is exceeded.
     if ($total >= 20) {
-      $form_state->setErrorByName('title', $this->t('You cannot create more than 20 Spotify Artist entities.'));
+      $form_state->setErrorByName('label', $this->t('You cannot create more than 20 Spotify Artist entities.'));
     }
 
     return $entity;

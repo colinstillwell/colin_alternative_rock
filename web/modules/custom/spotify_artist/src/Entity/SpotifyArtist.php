@@ -30,7 +30,7 @@ use Drupal\spotify_artist\Form\SpotifyArtistForm;
   entity_keys: [
     'id' => 'id',
     'uuid' => 'uuid',
-    'label' => 'title',
+    'label' => 'label',
   ],
   handlers: [
     'list_builder' => SpotifyArtistListBuilder::class,
@@ -61,9 +61,9 @@ class SpotifyArtist extends ContentEntityBase {
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array {
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    $fields['title'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Admin Title'))
-      ->setDescription(t('A title used only in the admin interface to help identify this Spotify Artist entity. Not visible to users.'))
+    $fields['label'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Label'))
+      ->setDescription(t('A label used only in the admin interface to help identify this Spotify Artist entity. Not visible to users.'))
       ->setRequired(TRUE)
       ->setSettings([
         'max_length' => 255,
