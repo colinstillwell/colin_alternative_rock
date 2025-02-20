@@ -36,6 +36,26 @@ https://colin-alternative-rock.ddev.site
 
 This section highlights key technical decisions made during development.
 
+### Spotify API: Data Fetching Approach
+
+Fetching data from an external API requires careful consideration of performance, reliability, and user experience. After evaluating multiple approaches, I identified these as the top three most practical options for handling API data efficiently.
+
+#### Option 1 - Fetch Data on Page Load
+
+This approach retrieves artist data directly from the API every time the page loads. It ensures real-time updates but slows down page loads, increases dependency on an external service, and fails if the API is unavailable.
+
+#### Option 2 - Cached API Responses
+
+Data is temporarily stored to reduce frequent API requests. This lowers the number of calls while keeping data relatively fresh, but cached data can expire unexpectedly, causing occasional delays when refetching.
+
+#### Option 3 - Store Data in Entity (Chosen Approach)
+
+Artist data is fetched once when the entity is created and stored for future use. This ensures fast page loads, works offline, and provides a predictable user experience. However, data may become outdated over time.
+
+#### Conclusion
+
+Fetching data on page load provides real-time updates but introduces performance and reliability issues. By storing artist data in an entity, the project ensures fast page loads, resilience to API failures, and full control over when updates occur. Given more time, I would introduce an automated update mechanism, such as refreshing data if it hasn’t been updated recently or running scheduled updates via a cron job, to keep artist information more up to date.
+
 ### Conventional Commits
 
 All commits in this project are prefixed with [master]. This is because I have globally configured Conventional Commits to integrate with Jira. If no ticket ID is provided (as in this case), the prefix defaults to the name of the branch I am working on.
