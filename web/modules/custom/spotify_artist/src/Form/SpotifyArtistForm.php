@@ -40,7 +40,7 @@ class SpotifyArtistForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    parent::validateForm($form, $form_state);
+    $entity = parent::validateForm($form, $form_state);
 
     // Count existing Spotify Artist entities.
     $total = $this->entityTypeManager->getStorage('spotify_artist')
@@ -53,6 +53,8 @@ class SpotifyArtistForm extends ContentEntityForm {
     if ($total >= 20) {
       $form_state->setErrorByName('title', $this->t('You cannot create more than 20 Spotify Artist entities.'));
     }
+
+    return $entity;
   }
 
 }
