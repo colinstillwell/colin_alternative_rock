@@ -19,6 +19,7 @@ install:
   - drupal:page_cache
   - drupal:path
   - drupal:shortcut
+  - drupal:spotify_artist
   - drupal:text
   - drupal:toolbar
   - drupal:user

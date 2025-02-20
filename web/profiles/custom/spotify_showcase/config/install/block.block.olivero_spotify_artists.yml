@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - spotify_artist
+    - system
+  theme:
+    - olivero
+id: olivero_spotify_artists
+theme: olivero
+region: content
+weight: 0
+plugin: spotify_artists
+settings: {}
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
