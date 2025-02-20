@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the installation profile.
+ */
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function spotify_showcase_install(): void {
+  // Create the homepage.
+  $node = Node::create([
+    'type' => 'page',
+    'title' => 'Homepage',
+    'status' => 1,
+    'uid' => 1,
+  ]);
+  $node->save();
+}
