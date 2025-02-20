@@ -2,35 +2,70 @@
 
 A Drupal 11 project implementing a custom module for Spotify API integration.
 
-## 🛠️ Prerequisites
+## Table of Contents
 
-- [DDEV](https://ddev.readthedocs.io) (v1.24+ recommended)
+- 🚀 [Quick Start](#quick-start)
+- 📦 [Manual Module Installation](#manual-module-installation)
+- 📝 [Notes](#notes)
+  - [Spotify API: Data Fetching Approach](#spotify-api-data-fetching-approach)
+  - [Conventional Commits](#conventional-commits)
+  - [Coding Standards](#coding-standards)
+  - [Recipes](#recipes)
+  - [Profile](#profile)
 
-## 🚀 Quick Start
+## Quick Start
 
-Clone the repository:
+### Step 1: Prerequisites
+
+Ensure you have [DDEV](https://ddev.readthedocs.io) installed (v1.24+ recommended).
+
+### Step 2: Clone the Repository
 
 ```bash
 git clone https://github.com/colinstillwell/colin_alternative_rock.git
 cd colin_alternative_rock
 ```
 
-Start the environment and install dependencies:
+### Step 3: Start the Environment and Install Dependencies
 
 ```bash
+# Start the environment
 ddev start
+
+# Install dependencies
 ddev composer install
+
+# Install the site
 ddev drush site-install spotify_showcase --site-name='Spotify Showcase' --account-name=admin --account-pass=admin --yes
 ```
 
-Get a one-time login URL:
+### Step 4: Visit the site
+
+- URL: https://colin-alternative-rock.ddev.site
+- Username: admin
+- Password: admin
+
+## Manual Module Installation
+
+If you want to use the `spotify_artist` module independently of this project, follow these steps:
+
+### Step 1: Copy the Module
+
+Locate the module in the repository at `web/modules/custom/spotify_artist`.
+
+### Step 2: Place the Module
+
+Move the module into `modules/custom/` in your Drupal project.
+
+### Step 3: Enable the module
+
+You can enable the module using Drush, Drupal’s command-line tool:
 
 ```bash
-ddev drush uli
+drush en spotify_artist -y
 ```
 
-Visit the site:
-https://colin-alternative-rock.ddev.site
+If you prefer, you can enable the module through the Drupal admin UI under Extend (`/admin/modules`).
 
 ## Notes
 
@@ -64,7 +99,7 @@ Conventional Commits help automate the creation of release notes, providing a st
 
 ### Coding Standards
 
-The `colin_alternative_rock.code-workspace` file contains Visual Studio Code settings and recommended extensions to enforce Drupal coding standards. These settings are loosely based on [Drupal.org’s official standards](https://www.drupal.org/node/2918206) and demonstrate my understanding of best practices.
+The `colin_alternative_rock.code-workspace` file contains Visual Studio Code settings and recommended extensions to enforce Drupal coding standards. These settings are loosely based on [Drupal.org’s official standards](https://www.drupal.org/node/2918206), and demonstrate my understanding of best practices.
 
 I am aware that some of these settings would typically be configured per-user. I also have experience configuring this setup for PhpStorm, another widely used Drupal IDE.
 
@@ -72,8 +107,8 @@ Additionally, files in the root directory, such as Node packages and dotfiles, h
 
 ### Recipes
 
-I explored Drupal Recipes but chose an installation profile (spotify_showcase) instead. Profiles run during site install, making them better for setting up a new project from scratch, while recipes are more suited for post-install changes.
+I explored Drupal Recipes but chose an installation profile (`spotify_showcase`) instead. Profiles run during site install, making them better for setting up a new project from scratch, while recipes are more suited for post-install changes.
 
 ### Profile
 
-The Spotify Showcase profile (spotify_showcase) is a custom installation profile that preconfigures the site with essential modules, settings and configurations. It streamlines the installation process, ensuring the project is ready to use straight from the quick start.
+The Spotify Showcase profile (`spotify_showcase`) is a custom installation profile that preconfigures the site with essential modules, settings, and configurations. It streamlines the installation process, ensuring the project is ready to use straight from the quick start.
