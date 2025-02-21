@@ -43,6 +43,13 @@ class SpotifyArtistEditForm extends ContentEntityForm {
       if (isset($form[$field_name])) {
         $form[$field_name]['#disabled'] = TRUE;
       }
+
+      // Show image next to the artist_image field.
+      if ($field_name === 'artist_image') {
+        /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
+        $entity = $form_state->getFormObject()->getEntity();
+        $form[$field_name]['#suffix'] = $entity->getRenderedArtistImage('thumbnail');
+      }
     }
 
     return $form;

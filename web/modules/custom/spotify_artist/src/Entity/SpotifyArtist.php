@@ -164,6 +164,27 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
+  public function getArtistImage() {
+    return $this->get('artist_image')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getRenderedArtistImage(string $image_style) {
+    $render_array = [
+      '#theme' => 'imagecache_external',
+      '#uri' => $this->getArtistImage(),
+      '#style_name' => $image_style,
+      '#alt' => $this->getArtistName(),
+    ];
+
+    return \Drupal::service('renderer')->render($render_array);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function preSave(EntityStorageInterface $storage) {
     parent::preSave($storage);
 

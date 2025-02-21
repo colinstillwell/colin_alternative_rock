@@ -21,6 +21,7 @@
         "drupal/core-composer-scaffold": "^11.1",
         "drupal/core-project-message": "^11.1",
         "drupal/core-recommended": "^11.1",
+        "drupal/imagecache_external": "^3.0",
         "drush/drush": "^13.3"
     },
     "conflict": {
