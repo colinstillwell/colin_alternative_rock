@@ -34,15 +34,18 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
   public function getArtistImage();
 
   /**
-   * Gets the rendered Spotify Artist image.
+   * Gets a renderable Spotify Artist image.
    *
    * @param string $image_style
    *   The image style to render the image with.
+   * @param bool $rendered
+   *   If TRUE, return the rendered image HTML.
+   *   If FALSE, return the renderable array.
    *
-   * @return string
-   *   Rendered image HTML of the Spotify Artist.
+   * @return array|string
+   *   Renderable array or HTML string of the Spotify Artist image.
    */
-  public function getRenderedArtistImage($image_style);
+  public function getRenderableArtistImage($image_style, $rendered = FALSE);
 
   /**
    * Gets the Spotify Artist genres.

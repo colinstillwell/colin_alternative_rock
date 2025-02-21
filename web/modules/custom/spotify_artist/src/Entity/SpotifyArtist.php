@@ -285,13 +285,17 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getRenderedArtistImage(string $image_style) {
+  public function getRenderableArtistImage(string $image_style, bool $rendered = FALSE) {
     $render_array = [
       '#theme' => 'imagecache_external',
       '#uri' => $this->getArtistImage(),
       '#style_name' => $image_style,
       '#alt' => $this->getArtistName(),
     ];
+
+    if (!$rendered) {
+      return $render_array;
+    }
 
     return \Drupal::service('renderer')->render($render_array);
   }
