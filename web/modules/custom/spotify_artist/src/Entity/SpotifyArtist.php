@@ -5,6 +5,7 @@ namespace Drupal\spotify_artist\Entity;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Attribute\ContentEntityType;
 use Drupal\Core\Entity\ContentEntityBase;
+use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\ContentEntityDeleteForm;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
@@ -14,7 +15,6 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\spotify_artist\SpotifyArtistListBuilder;
-use Drupal\spotify_artist\Form\SpotifyArtistForm;
 use Drupal\spotify_artist\Form\SpotifyArtistAddForm;
 use Drupal\spotify_artist\Form\SpotifyArtistEditForm;
 
@@ -39,7 +39,7 @@ use Drupal\spotify_artist\Form\SpotifyArtistEditForm;
   handlers: [
     'list_builder' => SpotifyArtistListBuilder::class,
     'form' => [
-      'default' => SpotifyArtistForm::class,
+      'default' => ContentEntityForm::class,
       'add' => SpotifyArtistAddForm::class,
       'edit' => SpotifyArtistEditForm::class,
       'delete' => ContentEntityDeleteForm::class,

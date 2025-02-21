@@ -2,12 +2,13 @@
 
 namespace Drupal\spotify_artist\Form;
 
+use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Form controller for the entity edit forms.
  */
-class SpotifyArtistEditForm extends SpotifyArtistForm {
+class SpotifyArtistEditForm extends ContentEntityForm {
 
   /**
    * {@inheritdoc}
