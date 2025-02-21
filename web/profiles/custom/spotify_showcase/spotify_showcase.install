@@ -41,4 +41,41 @@ function spotify_showcase_install(): void {
     'link' => ['uri' => 'internal:/admin/content/spotify-artists/add'],
   ]);
   $shortcut->save();
+
+  // Create Spotify Artists.
+  $spotify_artists = [
+    'Bastille' => '7EQ0qTo7fWT7DPxmxtSYEc',
+    'Imagine Dragons' => '53XhwfbYqKCa1cC15pYq2q',
+    'Coldplay' => '4gzpq5DPGxSnKTe4SA8HAU',
+    'Keane' => '53A0W3U0s8diEn9RhXQhVz',
+    'Foo Fighters' => '7jy3rLJdDQY21OgRLCZ9sD',
+    'Green Day' => '7oPftvlwr6VrsViSDV7fJY',
+    'Snow Patrol' => '3rIZMv9rysU7JkLzEaC5Jp',
+    'Oasis' => '2DaxqgrOhkeH0fpeiQq2f4',
+    'Linkin Park' => '6XyY86QOPPrYVGvF9ch6wz',
+    'Arctic Monkeys' => '7Ln80lUS6He07XvHI8qqHH',
+    'Muse' => '12Chz98pHFMPJEknJQMWvI',
+    'Razorlight' => '450iujbtN6XgiA9pv6fVZz',
+    'Red Hot Chili Peppers' => '0L8ExT028jH3ddEcZwqJJ5',
+    'Stereophonics' => '21UJ7PRWb3Etgsu99f8yo8',
+    'blink-182' => '6FBDaR13swtiWwGhX1WQsP',
+    'Fall Out Boy' => '4UXqAaa6dQYAk18Lv7PEgX',
+    'Kasabian' => '11wRdbnoYqRddKBrpHt4Ue',
+    'Biffy Clyro' => '1km0R7wy712AzLkA1WjKET',
+    'Kings of Leon' => '2qk9voo8llSGYcZ6xrBzKx',
+    'Travis' => '3bUwxJgNakzYKkqAVgZLlh',
+  ];
+
+  foreach ($spotify_artists as $page_title => $spotify_id) {
+    $values = [
+      'page_title' => $page_title,
+      'spotify_id' => $spotify_id,
+    ];
+    $spotify_artist = \Drupal::entityTypeManager()
+      ->getStorage('spotify_artist')
+      ->create($values);
+    $spotify_artist->save();
+    \Drupal::logger('spotify_showcase')->notice('Created default Spotify Artist: @name', ['@name' => $page_title]);
+  }
+
 }
