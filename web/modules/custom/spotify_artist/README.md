@@ -2,6 +2,10 @@
 
 A custom Drupal module that integrates with the Spotify API to manage and display artist details within a Drupal site.
 
+## Requirements
+
+- [Imagecache External](https://www.drupal.org/project/imagecache_external): Used to apply image styles to external artist images.
+
 ## Features
 
 - Allows administrators to store up to 20 Spotify Artist IDs.
