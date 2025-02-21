@@ -12,6 +12,23 @@ class SpotifyArtistEditForm extends SpotifyArtistForm {
   /**
    * {@inheritdoc}
    */
+  public function save(array $form, FormStateInterface $form_state) {
+    $result = parent::save($form, $form_state);
+
+    // Show success message.
+    $this->messenger()->addStatus($this->t("Updated Spotify Artist %page_title.", [
+      '%page_title' => $this->entity->toLink()->toString(),
+    ]));
+
+    // Redirect to the entity view.
+    $form_state->setRedirect('entity.spotify_artist.canonical', ['spotify_artist' => $this->entity->id()]);
+
+    return $result;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
 

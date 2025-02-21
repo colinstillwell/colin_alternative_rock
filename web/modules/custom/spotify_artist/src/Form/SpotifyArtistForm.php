@@ -13,32 +13,6 @@ class SpotifyArtistForm extends ContentEntityForm {
   /**
    * {@inheritdoc}
    */
-  public function save(array $form, FormStateInterface $form_state) {
-    $result = parent::save($form, $form_state);
-    $is_new = $result === SAVED_NEW;
-
-    // Show success message.
-    $this->messenger()->addStatus($this->t("%action Spotify Artist %page_title.", [
-      '%action' => $is_new ? 'Created' : 'Updated',
-      '%page_title' => $this->entity->toLink()->toString(),
-    ]));
-
-    // Redirect the user depending on whether the entity is new.
-    if ($is_new) {
-      // Redirect to the entity list.
-      $form_state->setRedirect('entity.spotify_artist.collection');
-    }
-    else {
-      // Redirect to the entity view.
-      $form_state->setRedirect('entity.spotify_artist.canonical', ['spotify_artist' => $this->entity->id()]);
-    }
-
-    return $result;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $entity = parent::validateForm($form, $form_state);
 
