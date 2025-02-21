@@ -15,6 +15,8 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\spotify_artist\SpotifyArtistListBuilder;
 use Drupal\spotify_artist\Form\SpotifyArtistForm;
+use Drupal\spotify_artist\Form\SpotifyArtistAddForm;
+use Drupal\spotify_artist\Form\SpotifyArtistEditForm;
 
 /**
  * Defines the Spotify Artist entity.
@@ -38,6 +40,8 @@ use Drupal\spotify_artist\Form\SpotifyArtistForm;
     'list_builder' => SpotifyArtistListBuilder::class,
     'form' => [
       'default' => SpotifyArtistForm::class,
+      'add' => SpotifyArtistAddForm::class,
+      'edit' => SpotifyArtistEditForm::class,
       'delete' => ContentEntityDeleteForm::class,
     ],
     'route_provider' => [
