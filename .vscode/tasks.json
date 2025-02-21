@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ddev-xdebug-enable",
+      "command": "ddev",
+      "args": [
+        "xdebug",
+        "on"
+      ],
+      "type": "shell"
+    },
+    {
+      "label": "ddev-xdebug-disable",
+      "command": "ddev",
+      "args": [
+        "xdebug",
+        "off"
+      ],
+      "type": "shell"
+    }
+  ]
+}
