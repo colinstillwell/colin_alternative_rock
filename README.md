@@ -48,6 +48,11 @@ ddev drush site-install spotify_showcase --site-name='Spotify Showcase' --accoun
 
 #### Step 5: Configure Spotify API
 
+**PLEASE NOTE:**
+The **Client ID** and **Client Secret** are preconfigured during site installation for convenience.
+You **do not** need to configure them manually unless you want to use your own credentials.
+While this is not best practice, it is an intentional decision to streamline testing, and I would not typically do it this way.
+
 Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
 
 #### Step 6: Manage Spotify Artists
