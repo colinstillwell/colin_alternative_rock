@@ -195,6 +195,28 @@ class SpotifyArtist extends ContentEntityBase {
       ])
       ->setDisplayConfigurable('view', FALSE);
 
+    $fields['artist_popularity'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Artist Popularity'))
+      ->setDescription(t('The popularity of the artist. Retrieved automatically from Spotify.'))
+      ->setRequired(FALSE)
+      ->setReadOnly(TRUE)
+      ->setSettings([
+        'min' => 0,
+        'max' => 100,
+        'default_value' => NULL,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'number',
+        'weight' => 7,
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'number_integer',
+        'weight' => 7,
+      ])
+      ->setDisplayConfigurable('view', FALSE);
+
     return $fields;
   }
 
@@ -251,6 +273,13 @@ class SpotifyArtist extends ContentEntityBase {
    */
   public function getSpotifyUrl() {
     return $this->get('spotify_url')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getArtistPopularity() {
+    return (int) $this->get('artist_popularity')->value;
   }
 
   /**
@@ -315,6 +344,7 @@ class SpotifyArtist extends ContentEntityBase {
       $this->updateFromSpotify('artist_genres', $artist_genres = $artist_data['genres'] ?? [], TRUE);
       $this->updateFromSpotify('artist_followers', $artist_data['followers']['total'] ?? 0);
       $this->updateFromSpotify('spotify_url', $artist_data['external_urls']['spotify'] ?? '');
+      $this->updateFromSpotify('artist_popularity', $artist_data['popularity'] ?? 0);
     }
   }
 

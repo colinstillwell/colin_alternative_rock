@@ -71,4 +71,12 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    */
   public function getSpotifyUrl();
 
+  /**
+   * Gets the Spotify Artist popularity.
+   *
+   * @return int
+   *   Popularity of the Spotify Artist.
+   */
+  public function getArtistPopularity();
+
 }
