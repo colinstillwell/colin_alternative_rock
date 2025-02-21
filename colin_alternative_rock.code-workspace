@@ -96,6 +96,7 @@
       "redhat.vscode-yaml",
       "esbenp.prettier-vscode",
       "marcelovani.drupal-recipes-autocomplete-vscode",
+      "usernamehw.errorlens",
     ],
   },
 }
