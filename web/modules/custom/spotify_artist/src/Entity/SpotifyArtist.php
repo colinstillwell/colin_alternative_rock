@@ -6,11 +6,13 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Attribute\ContentEntityType;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\ContentEntityDeleteForm;
+use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Routing\AdminHtmlRouteProvider;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\spotify_artist\SpotifyArtistListBuilder;
 use Drupal\spotify_artist\Form\SpotifyArtistForm;
 
@@ -54,6 +56,7 @@ use Drupal\spotify_artist\Form\SpotifyArtistForm;
   data_table: 'spotify_artist_field_data',
 )]
 class SpotifyArtist extends ContentEntityBase {
+  use StringTranslationTrait;
 
   /**
    * {@inheritdoc}
@@ -111,6 +114,29 @@ class SpotifyArtist extends ContentEntityBase {
    */
   public function getSpotifyId() {
     return $this->get('spotify_id')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preSave(EntityStorageInterface $storage) {
+    parent::preSave($storage);
+
+    $spotify_id = $this->getSpotifyId();
+    if (!empty($spotify_id)) {
+      // Fetch the artist data from the Spotify API.
+      $spotify_api_service = \Drupal::service('spotify_api.service');
+      $artist_data = $spotify_api_service->fetchArtist($spotify_id);
+
+      // Set the label if the artist name is available.
+      if (!empty($artist_data['name'])) {
+        $this->set('label', $artist_data['name']);
+        \Drupal::messenger()->addStatus($this->t('Successfully set artist name from Spotify.'));
+      }
+      else {
+        \Drupal::messenger()->addError($this->t('Failed to set artist name from Spotify.'));
+      }
+    }
   }
 
 }
