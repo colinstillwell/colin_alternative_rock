@@ -100,7 +100,7 @@ class SpotifyArtist extends ContentEntityBase {
    */
   public function access($operation, ?AccountInterface $account = NULL, $return_as_object = FALSE) {
     if ($operation === 'view') {
-      $result = AccessResult::allowedIfHasPermission($account, 'view spotify artists');
+      $result = AccessResult::allowedIfHasPermission($account, 'view spotify artist entities');
       return $return_as_object ? $result : $result->isAllowed();
     }
     return parent::access($operation, $account, $return_as_object);

@@ -1,9 +1,9 @@
-administer spotify artists:
-  title: 'Administer Spotify Artists'
-  description: 'Allow users to administer Spotify Artists.'
+administer spotify artist entities:
+  title: 'Administer Spotify Artist entities'
+  description: 'Allow users to administer Spotify Artist entities.'
   restrict access: true
 
-view spotify artists:
+view spotify artist entities:
   title: 'View Spotify Artists'
   description: 'Allow users to view Spotify Artists.'
   restrict access: true

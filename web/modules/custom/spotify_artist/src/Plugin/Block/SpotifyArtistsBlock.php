@@ -73,7 +73,7 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
       $text = $artist->label();
       // If the current user has permission to view the artist, display the
       // artist name as a link to the artist page.
-      if ($this->currentUser->hasPermission('view spotify artists')) {
+      if ($this->currentUser->hasPermission('view spotify artist entities')) {
         $items[] = $artist->toLink($text);
       }
       // Otherwise, just display the artist name as plain text.
