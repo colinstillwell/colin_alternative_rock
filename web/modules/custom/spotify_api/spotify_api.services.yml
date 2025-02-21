@@ -1,0 +1,11 @@
+services:
+  spotify_api.service:
+    class: 'Drupal\spotify_api\SpotifyApiService'
+    arguments:
+      [
+        '@state',
+        '@config.factory',
+        '@logger.factory',
+        '@messenger',
+        '@http_client',
+      ]
