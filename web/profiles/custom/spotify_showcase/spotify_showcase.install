@@ -46,13 +46,13 @@ function spotify_showcase_install(): void {
 
   // Create Spotify Artists.
   $spotify_artists = [
-    'Bastille' => '7EQ0qTo7fWT7DPxmxtSYEc',
-    'Imagine Dragons' => '53XhwfbYqKCa1cC15pYq2q',
-    'Coldplay' => '4gzpq5DPGxSnKTe4SA8HAU',
-    'Keane' => '53A0W3U0s8diEn9RhXQhVz',
+    'Kaiser Chiefs' => '0LbLWjaweRbO4FDKYlbfNt',
+    'The Killers' => '0C0XlULifJtAgn6ZNCW2eu',
+    'Bloc Party' => '3MM8mtgFzaEJsqbjZBSsHJ',
+    'Blur' => '7MhMgCo0Bl0Kukl93PZbYS',
     'Foo Fighters' => '7jy3rLJdDQY21OgRLCZ9sD',
     'Green Day' => '7oPftvlwr6VrsViSDV7fJY',
-    'Snow Patrol' => '3rIZMv9rysU7JkLzEaC5Jp',
+    'The Kooks' => '1GLtl8uqKmnyCWxHmw9tL4',
     'Oasis' => '2DaxqgrOhkeH0fpeiQq2f4',
     'Linkin Park' => '6XyY86QOPPrYVGvF9ch6wz',
     'Arctic Monkeys' => '7Ln80lUS6He07XvHI8qqHH',
