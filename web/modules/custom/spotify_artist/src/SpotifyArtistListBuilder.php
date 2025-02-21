@@ -27,7 +27,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
 
     // Check if the limit (20) is exceeded.
     if ($total >= 20) {
-      $this->messenger()->addWarning($this->t('You have reached the limit of 20 Spotify Artist entities.'));
+      $this->messenger()->addWarning($this->t('You have reached the limit of 20 Spotify Artists.'));
     }
 
     return $build;
