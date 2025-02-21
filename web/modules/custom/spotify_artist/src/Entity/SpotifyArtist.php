@@ -309,26 +309,12 @@ class SpotifyArtist extends ContentEntityBase {
       $spotify_api_service = \Drupal::service('spotify_api.service');
       $artist_data = $spotify_api_service->fetchArtist($spotify_id);
 
-      // Update artist name from Spotify.
-      $artist_name = $artist_data['name'] ?? '';
-      $this->updateFromSpotify('artist_name', $artist_name);
-
-      // Update artist image from Spotify.
-      $artist_image = !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '';
-      $this->updateFromSpotify('artist_image', $artist_image);
-
-      // Update artist genres from Spotify.
-      $artist_genres = $artist_data['genres'] ?? [];
-      $this->updateFromSpotify('artist_genres', $artist_genres, TRUE);
-
-      // Update artist followers from Spotify.
-      $artist_followers = $artist_data['followers']['total'] ?? 0;
-      $this->updateFromSpotify('artist_followers', $artist_followers);
-
-      // Update spotify URL from Spotify.
-      $spotify_url = $artist_data['external_urls']['spotify'] ?? '';
-      $this->updateFromSpotify('spotify_url', $spotify_url);
-
+      // Apply updates.
+      $this->updateFromSpotify('artist_name', $artist_data['name'] ?? '');
+      $this->updateFromSpotify('artist_image', !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '');
+      $this->updateFromSpotify('artist_genres', $artist_genres = $artist_data['genres'] ?? [], TRUE);
+      $this->updateFromSpotify('artist_followers', $artist_data['followers']['total'] ?? 0);
+      $this->updateFromSpotify('spotify_url', $artist_data['external_urls']['spotify'] ?? '');
     }
   }
 
