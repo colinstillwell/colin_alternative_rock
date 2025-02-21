@@ -34,7 +34,16 @@ class SpotifyArtistEditForm extends ContentEntityForm {
     $form = parent::buildForm($form, $form_state);
 
     // Disable fields that should not be edited manually.
-    $form['artist_name']['#disabled'] = TRUE;
+    $disabled_fields = [
+      'artist_name',
+      'artist_image',
+    ];
+
+    foreach ($disabled_fields as $field_name) {
+      if (isset($form[$field_name])) {
+        $form[$field_name]['#disabled'] = TRUE;
+      }
+    }
 
     return $form;
   }

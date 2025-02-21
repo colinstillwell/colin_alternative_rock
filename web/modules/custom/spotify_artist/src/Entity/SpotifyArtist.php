@@ -116,6 +116,23 @@ class SpotifyArtist extends ContentEntityBase {
       ])
       ->setDisplayConfigurable('view', FALSE);
 
+    $fields['artist_image'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Artist Image'))
+      ->setDescription(t('The image of the artist. Retrieved automatically from Spotify.'))
+      ->setRequired(FALSE)
+      ->setReadOnly(TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 3,
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'string',
+        'weight' => 3,
+      ])
+      ->setDisplayConfigurable('view', FALSE);
+
     return $fields;
   }
 
@@ -163,6 +180,17 @@ class SpotifyArtist extends ContentEntityBase {
       }
       else {
         \Drupal::messenger()->addError($this->t('Failed to set artist name from Spotify.'));
+      }
+
+      // Set the artist image from the Spotify API response.
+      $image_url = !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '';
+
+      if (!empty($image_url)) {
+        $this->set('artist_image', $image_url);
+        \Drupal::messenger()->addStatus($this->t('Successfully set artist image from Spotify.'));
+      }
+      else {
+        \Drupal::messenger()->addError($this->t('Failed to set artist image from Spotify.'));
       }
     }
   }

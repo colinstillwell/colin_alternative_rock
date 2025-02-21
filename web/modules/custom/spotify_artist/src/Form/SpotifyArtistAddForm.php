@@ -47,7 +47,16 @@ class SpotifyArtistAddForm extends ContentEntityForm {
     }
 
     // Hide fields that should not be set manually.
-    $form['artist_name']['#access'] = FALSE;
+    $hidden_fields = [
+      'artist_name',
+      'artist_image',
+    ];
+
+    foreach ($hidden_fields as $field_name) {
+      if (isset($form[$field_name])) {
+        $form[$field_name]['#access'] = FALSE;
+      }
+    }
 
     return $form;
   }
