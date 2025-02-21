@@ -4,19 +4,18 @@ A custom Drupal module that integrates with the Spotify API to manage and displa
 
 ## Features
 
-- Allows administrators to store up to 20 Spotify artist IDs.
-- Provides a 'Spotify Artists' block that displays artist names with links to individual pages, displaying the artist’s name, image, and associated genres.
+- Allows administrators to store up to 20 Spotify Artist IDs.
+- Provides a **Spotify Artists** block that displays artist names with links to individual pages, which show the artist’s name, image, and associated genres.
 - Fetches artist data from the Spotify API upon entity creation for better performance and offline access.
 - Restricts artist detail pages to logged-in users.
 
 ## Content Management
 
-- Spotify artists can be managed at `/admin/content/spotify-artists`.
+- Navigate to **Content > Spotify Artists** (`/admin/content/spotify-artists`) to manage Spotify Artists.
 
-## Configuration
+## Permissions
 
-- No additional configuration is required after installation.
-- Permissions can be managed at `/admin/people/permissions`.
+To manage Spotify Artists, users must have the `administer spotify artists` permission.
 
 ## Additional Notes
 
