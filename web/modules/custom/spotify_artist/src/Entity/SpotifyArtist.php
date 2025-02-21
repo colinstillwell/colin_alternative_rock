@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Routing\AdminHtmlRouteProvider;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -133,6 +134,24 @@ class SpotifyArtist extends ContentEntityBase {
       ])
       ->setDisplayConfigurable('view', FALSE);
 
+    $fields['artist_genres'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Artist Genres'))
+      ->setDescription(t('A list of genres associated with the artist. Retrieved automatically from Spotify.'))
+      ->setRequired(FALSE)
+      ->setReadOnly(TRUE)
+      ->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 4,
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'string',
+        'weight' => 4,
+      ])
+      ->setDisplayConfigurable('view', FALSE);
+
     return $fields;
   }
 
@@ -171,6 +190,15 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
+  public function getArtistGenres(bool $as_string = FALSE): array|string {
+    $genres = $this->get('artist_genres')->getValue();
+    $genre_list = array_map(fn($genre) => $genre['value'], $genres);
+    return $as_string ? implode(', ', $genre_list) : $genre_list;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getRenderedArtistImage(string $image_style) {
     $render_array = [
       '#theme' => 'imagecache_external',
@@ -189,14 +217,25 @@ class SpotifyArtist extends ContentEntityBase {
    *   The target field name.
    * @param string $field_value
    *   The new field value.
+   * @param bool $optional
+   *   Whether the value is optional.
    */
-  protected function updateFromSpotify($field_name, $field_value) {
+  protected function updateFromSpotify($field_name, $field_value, $optional = FALSE) {
     $field_definitions = $this->getFieldDefinitions();
     $field_label = $field_definitions[$field_name]->getLabel()->__toString();
 
     if (!empty($field_value)) {
-      $this->set($field_name, $field_value);
+      if (is_array($field_value)) {
+        $this->set($field_name, array_values($field_value));
+      }
+      else {
+        $this->set($field_name, $field_value);
+      }
+
       \Drupal::messenger()->addStatus($this->t('Updated @label from Spotify.', ['@label' => $field_label]));
+    }
+    elseif ($optional) {
+      \Drupal::messenger()->addWarning($this->t('No @label found from Spotify.', ['@label' => $field_label]));
     }
     else {
       \Drupal::messenger()->addError($this->t('Failed to update @label from Spotify.', ['@label' => $field_label]));
@@ -222,6 +261,10 @@ class SpotifyArtist extends ContentEntityBase {
       // Update artist image from Spotify.
       $artist_image = !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '';
       $this->updateFromSpotify('artist_image', $artist_image);
+
+      // Update artist genres from Spotify.
+      $artist_genres = $artist_data['genres'] ?? [];
+      $this->updateFromSpotify('artist_genres', $artist_genres, TRUE);
 
     }
   }

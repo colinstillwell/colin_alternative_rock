@@ -50,6 +50,7 @@ class SpotifyArtistAddForm extends ContentEntityForm {
     $hidden_fields = [
       'artist_name',
       'artist_image',
+      'artist_genres',
     ];
 
     foreach ($hidden_fields as $field_name) {

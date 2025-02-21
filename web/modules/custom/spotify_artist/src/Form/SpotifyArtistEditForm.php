@@ -37,6 +37,7 @@ class SpotifyArtistEditForm extends ContentEntityForm {
     $disabled_fields = [
       'artist_name',
       'artist_image',
+      'artist_genres',
     ];
 
     foreach ($disabled_fields as $field_name) {
