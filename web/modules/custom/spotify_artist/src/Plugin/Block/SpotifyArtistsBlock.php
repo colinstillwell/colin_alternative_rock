@@ -65,6 +65,8 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
     $ids = $storage->getQuery()
       ->accessCheck(TRUE)
       ->sort('artist_popularity', 'DESC')
+      ->sort('artist_followers', 'DESC')
+      ->sort('artist_name', 'ASC')
       ->execute();
     $artists = $storage->loadMultiple($ids);
     $items = [];

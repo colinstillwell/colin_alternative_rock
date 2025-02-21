@@ -35,6 +35,8 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
     $query = $this->getStorage()->getQuery()
       ->accessCheck(TRUE)
       ->sort('artist_popularity', 'DESC')
+      ->sort('artist_followers', 'DESC')
+      ->sort('artist_name', 'ASC')
       ->execute();
 
     return $this->storage->loadMultiple($query);
