@@ -260,8 +260,6 @@ class SpotifyArtist extends ContentEntityBase {
       else {
         $this->set($field_name, $field_value);
       }
-
-      \Drupal::messenger()->addStatus($this->t('Updated @label from Spotify.', ['@label' => $field_label]));
     }
     elseif ($optional) {
       \Drupal::messenger()->addWarning($this->t('No @label found from Spotify.', ['@label' => $field_label]));
