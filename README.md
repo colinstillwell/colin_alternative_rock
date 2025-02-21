@@ -48,11 +48,11 @@ ddev drush site-install spotify_showcase --site-name='Spotify Showcase' --accoun
 
 #### Step 5: Configure Spotify API
 
-- Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
+Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
 
 #### Step 6: Manage Spotify Artists
 
-- Follow the instructions in the `spotify_artist` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_artist/README.md)
+Follow the instructions in the `spotify_artist` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_artist/README.md)
 
 ## Manual Module Installation
 
@@ -78,11 +78,11 @@ If you prefer, you can enable the module through the Drupal admin UI under Exten
 
 #### Step 4: Configure Spotify API
 
-- Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
+Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
 
 #### Step 5: Manage Spotify Artists
 
-- Follow the instructions in the `spotify_artist` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_artist/README.md)
+Follow the instructions in the `spotify_artist` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_artist/README.md)
 
 ## Notes
 
