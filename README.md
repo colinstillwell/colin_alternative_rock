@@ -39,11 +39,20 @@ ddev composer install
 ddev drush site-install spotify_showcase --site-name='Spotify Showcase' --account-name=admin --account-pass=admin --yes
 ```
 
-### Step 4: Visit the site
+### Step 4: View the Site and Login
 
-- URL: https://colin-alternative-rock.ddev.site
-- Username: admin
-- Password: admin
+- Visit: https://colin-alternative-rock.ddev.site
+- The **Spotify Artists** block will display on the homepage without links to artist pages.
+- Login (username: admin, password: admin).
+- The **Spotify Artists** block will display on the homepage with links to artist pages.
+
+### Step 5: Configure Spotify API
+
+- Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
+
+### Step 6: Manage Spotify Artists
+
+- Follow the instructions in the `spotify_artist` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_artist/README.md)
 
 ## Manual Module Installation
 
@@ -55,7 +64,7 @@ Locate the module in the repository at `web/modules/custom/spotify_artist`.
 
 ### Step 2: Place the Module
 
-Move the module into `modules/custom/` in your Drupal project.
+Place the `spotify_artist` module into `modules/custom/` in your Drupal project.
 
 ### Step 3: Enable the module
 
@@ -67,13 +76,21 @@ drush en spotify_artist -y
 
 If you prefer, you can enable the module through the Drupal admin UI under Extend (`/admin/modules`).
 
+### Step 4: Configure Spotify API
+
+- Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
+
+### Step 5: Manage Spotify Artists
+
+- Follow the instructions in the `spotify_artist` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_artist/README.md)
+
 ## Notes
 
 This section highlights key technical decisions made during development.
 
 ### Spotify API: Data Fetching Approach
 
-Fetching data from an external API requires careful consideration of performance, reliability, and user experience. After evaluating multiple approaches, I identified these as the top three most practical options for handling API data efficiently.
+Fetching data from an external API requires balancing performance, reliability, and user experience. After evaluating multiple approaches, I identified these as the top three most practical options for handling API data efficiently.
 
 #### Option 1 - Fetch Data on Page Load
 
