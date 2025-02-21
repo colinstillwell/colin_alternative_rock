@@ -183,6 +183,27 @@ class SpotifyArtist extends ContentEntityBase {
   }
 
   /**
+   * Update a field from Spotify.
+   *
+   * @param string $field_name
+   *   The target field name.
+   * @param string $field_value
+   *   The new field value.
+   */
+  protected function updateFromSpotify($field_name, $field_value) {
+    $field_definitions = $this->getFieldDefinitions();
+    $field_label = $field_definitions[$field_name]->getLabel()->__toString();
+
+    if (!empty($field_value)) {
+      $this->set($field_name, $field_value);
+      \Drupal::messenger()->addStatus($this->t('Updated @label from Spotify.', ['@label' => $field_label]));
+    }
+    else {
+      \Drupal::messenger()->addError($this->t('Failed to update @label from Spotify.', ['@label' => $field_label]));
+    }
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function preSave(EntityStorageInterface $storage) {
@@ -194,25 +215,14 @@ class SpotifyArtist extends ContentEntityBase {
       $spotify_api_service = \Drupal::service('spotify_api.service');
       $artist_data = $spotify_api_service->fetchArtist($spotify_id);
 
-      // Set the artist name from the Spotify API response.
-      if (!empty($artist_data['name'])) {
-        $this->set('artist_name', $artist_data['name']);
-        \Drupal::messenger()->addStatus($this->t('Successfully set artist name from Spotify.'));
-      }
-      else {
-        \Drupal::messenger()->addError($this->t('Failed to set artist name from Spotify.'));
-      }
+      // Update artist name from Spotify.
+      $artist_name = $artist_data['name'] ?? '';
+      $this->updateFromSpotify('artist_name', $artist_name);
 
-      // Set the artist image from the Spotify API response.
-      $image_url = !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '';
+      // Update artist image from Spotify.
+      $artist_image = !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '';
+      $this->updateFromSpotify('artist_image', $artist_image);
 
-      if (!empty($image_url)) {
-        $this->set('artist_image', $image_url);
-        \Drupal::messenger()->addStatus($this->t('Successfully set artist image from Spotify.'));
-      }
-      else {
-        \Drupal::messenger()->addError($this->t('Failed to set artist image from Spotify.'));
-      }
     }
   }
 
