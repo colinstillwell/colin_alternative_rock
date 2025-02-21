@@ -136,6 +136,13 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
+  public function getArtistName() {
+    return $this->get('artist_name')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function preSave(EntityStorageInterface $storage) {
     parent::preSave($storage);
 

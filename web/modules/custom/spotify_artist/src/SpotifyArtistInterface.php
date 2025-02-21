@@ -17,4 +17,12 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    */
   public function getSpotifyId();
 
+  /**
+   * Gets the Spotify Artist name.
+   *
+   * @return string
+   *   Name of the Spotify Artist.
+   */
+  public function getArtistName();
+
 }

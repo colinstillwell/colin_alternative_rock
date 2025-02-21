@@ -70,15 +70,22 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
 
     // Add each artist to the list of items to display.
     foreach ($artists as $artist) {
-      $text = $artist->label();
+      /** @var \Drupal\spotify_artist\SpotifyArtistInterface $artist */
+      $artist_name = $artist->getArtistName();
+
+      // If the artist has no name, skip it.
+      if (empty($artist_name)) {
+        continue;
+      }
+
       // If the current user has permission to view the artist, display the
       // artist name as a link to the artist page.
       if ($this->currentUser->hasPermission('view spotify artist entities')) {
-        $items[] = $artist->toLink($text);
+        $items[] = $artist->toLink($artist_name);
       }
       // Otherwise, just display the artist name as plain text.
       else {
-        $items[] = $text;
+        $items[] = $artist_name;
       }
     }
 
