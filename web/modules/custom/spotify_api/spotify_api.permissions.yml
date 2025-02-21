@@ -1,0 +1,4 @@
+administer spotify api settings:
+  title: 'Administer Spotify API settings'
+  description: 'Allow users to administer Spotify API settings.'
+  restrict access: true

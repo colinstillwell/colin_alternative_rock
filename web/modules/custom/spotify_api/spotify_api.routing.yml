@@ -1,0 +1,7 @@
+spotify_api.settings:
+  path: '/admin/config/services/spotify-api'
+  defaults:
+    _form: '\Drupal\spotify_api\Form\SpotifyApiSettingsForm'
+    _title: 'Spotify API'
+  requirements:
+    _permission: 'administer spotify api settings'
