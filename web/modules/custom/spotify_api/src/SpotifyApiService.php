@@ -155,7 +155,7 @@ final class SpotifyApiService {
       }
       else {
         // Generic message for all other failures.
-        $this->messenger->addError($this->t('There was an issue retrieving artist data from Spotify. Please try again later.'));
+        $this->messenger->addError($this->t('There was an issue retrieving artist data from Spotify. Make sure the Spotify ID is correct or try again later.'));
       }
 
       // Log all details for debugging.
