@@ -32,9 +32,12 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildHeader() {
-    $header['id'] = $this->t('ID');
+    $header['artist_image'] = $this->t('Image');
+    $header['artist_name'] = $this->t('Name');
     $header['page_title'] = $this->t('Page Title');
-    $header['spotify_id'] = $this->t('Spotify ID');
+    $header['artist_genres'] = $this->t('Genres');
+    $header['artist_poularity'] = $this->t('Popularity');
+    $header['artist_followers'] = $this->t('Followers');
     return $header + parent::buildHeader();
   }
 
@@ -43,9 +46,12 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
-    $row['id'] = $entity->id();
+    $row['artist_image'] = $entity->getRenderedArtistImage('thumbnail');
+    $row['artist_name'] = $entity->getArtistName();
     $row['page_title'] = $entity->toLink();
-    $row['spotify_id'] = $entity->getSpotifyId();
+    $row['artist_genres'] = $entity->getArtistGenres(TRUE);
+    $row['artist_poularity'] = $entity->getArtistPopularity();
+    $row['artist_followers'] = $entity->getArtistFollowers();
 
     return $row + parent::buildRow($entity);
   }
