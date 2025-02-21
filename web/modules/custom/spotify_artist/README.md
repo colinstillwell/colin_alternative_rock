@@ -4,7 +4,12 @@ A custom Drupal module that integrates with the Spotify API to manage and displa
 
 ## Requirements
 
-- [Imagecache External](https://www.drupal.org/project/imagecache_external): Used to apply image styles to external artist images.
+[Imagecache External](https://www.drupal.org/project/imagecache_external) is used to apply image styles to external artist images.
+
+By default, images should display correctly. However, if images do not appear, you may need to manually whitelist the domain `i.scdn.co` or disable whitelisting in the module settings.
+
+To check or adjust this setting, navigate to:
+**Admin > Configuration > Media > Imagecache External** (`/admin/config/media/imagecache_external`).
 
 ## Features
 
@@ -15,7 +20,7 @@ A custom Drupal module that integrates with the Spotify API to manage and displa
 
 ## Content Management
 
-- Navigate to **Content > Spotify Artists** (`/admin/content/spotify-artists`) to manage Spotify Artists.
+Navigate to **Content > Spotify Artists** (`/admin/content/spotify-artists`) to manage Spotify Artists.
 
 ## Permissions
 
