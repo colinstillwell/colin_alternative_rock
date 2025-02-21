@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for the Spotify Artist module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function spotify_artist_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  if ($form_id === 'spotify_artist_form' || $form_id === 'spotify_artist_edit_form') {
+    // Disable fields which are automatically populated from Spotify.
+    $disable_fields = [
+      'artist_name',
+    ];
+
+    foreach ($disable_fields as $disable_field) {
+      $form[$disable_field]['#disabled'] = TRUE;
+    }
+  }
+}

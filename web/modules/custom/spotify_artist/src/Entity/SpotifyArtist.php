@@ -95,6 +95,23 @@ class SpotifyArtist extends ContentEntityBase {
       ->setDisplayConfigurable('form', FALSE)
       ->setDisplayConfigurable('view', FALSE);
 
+    $fields['artist_name'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Artist Name'))
+      ->setDescription(t('The name of the artist. Retrieved from Spotify.'))
+      ->setRequired(FALSE)
+      ->setReadOnly(TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 2,
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'string',
+        'weight' => 2,
+      ])
+      ->setDisplayConfigurable('view', FALSE);
+
     return $fields;
   }
 
@@ -128,9 +145,9 @@ class SpotifyArtist extends ContentEntityBase {
       $spotify_api_service = \Drupal::service('spotify_api.service');
       $artist_data = $spotify_api_service->fetchArtist($spotify_id);
 
-      // Set the label if the artist name is available.
+      // Set the artist name from the Spotify API response.
       if (!empty($artist_data['name'])) {
-        $this->set('label', $artist_data['name']);
+        $this->set('artist_name', $artist_data['name']);
         \Drupal::messenger()->addStatus($this->t('Successfully set artist name from Spotify.'));
       }
       else {
