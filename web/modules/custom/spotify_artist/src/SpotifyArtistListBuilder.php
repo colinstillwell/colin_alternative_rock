@@ -31,6 +31,18 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
+  public function load() {
+    $query = $this->getStorage()->getQuery()
+      ->accessCheck(TRUE)
+      ->sort('artist_popularity', 'DESC')
+      ->execute();
+
+    return $this->storage->loadMultiple($query);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildHeader() {
     $header['artist_image'] = $this->t('Image');
     $header['artist_name'] = $this->t('Name');
