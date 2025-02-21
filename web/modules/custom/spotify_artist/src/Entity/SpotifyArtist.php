@@ -152,6 +152,28 @@ class SpotifyArtist extends ContentEntityBase {
       ])
       ->setDisplayConfigurable('view', FALSE);
 
+    $fields['artist_followers'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Artist Followers'))
+      ->setDescription(t('The number of followers the artist has. Retrieved automatically from Spotify.'))
+      ->setRequired(FALSE)
+      ->setReadOnly(TRUE)
+      ->setSettings([
+        'unsigned' => TRUE,
+        'size' => 'big',
+        'default_value' => 0,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'number',
+        'weight' => 5,
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'number_integer',
+        'weight' => 5,
+      ])
+      ->setDisplayConfigurable('view', FALSE);
+
     return $fields;
   }
 
@@ -194,6 +216,13 @@ class SpotifyArtist extends ContentEntityBase {
     $genres = $this->get('artist_genres')->getValue();
     $genre_list = array_map(fn($genre) => $genre['value'], $genres);
     return $as_string ? implode(', ', $genre_list) : $genre_list;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getArtistFollowers() {
+    return (int) $this->get('artist_followers')->value;
   }
 
   /**
@@ -265,6 +294,10 @@ class SpotifyArtist extends ContentEntityBase {
       // Update artist genres from Spotify.
       $artist_genres = $artist_data['genres'] ?? [];
       $this->updateFromSpotify('artist_genres', $artist_genres, TRUE);
+
+      // Update artist followers from Spotify.
+      $artist_followers = $artist_data['followers']['total'] ?? 0;
+      $this->updateFromSpotify('artist_followers', $artist_followers);
 
     }
   }
