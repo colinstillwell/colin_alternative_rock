@@ -24,23 +24,25 @@ function spotify_showcase_install(): void {
     'uid' => 1,
   ]);
   $node->save();
+  \Drupal::logger('spotify_showcase')->notice('Created homepage.');
 
-  // Populate the default shortcut set.
-  $shortcut = Shortcut::create([
-    'shortcut_set' => 'default',
-    'title' => t('All Spotify Artists'),
-    'weight' => 0,
-    'link' => ['uri' => 'internal:/admin/content/spotify-artists'],
-  ]);
-  $shortcut->save();
+  // Create shortcuts.
+  $shortcuts = [
+    'internal:/admin/content/spotify-artists' => t('All Spotify Artists'),
+    'internal:/admin/content/spotify-artists/add' => t('Add Spotify Artist'),
+  ];
 
-  $shortcut = Shortcut::create([
-    'shortcut_set' => 'default',
-    'title' => t('Add Spotify Artist'),
-    'weight' => 1,
-    'link' => ['uri' => 'internal:/admin/content/spotify-artists/add'],
-  ]);
-  $shortcut->save();
+  foreach ($shortcuts as $uri => $title) {
+    $shortcut = Shortcut::create([
+      'shortcut_set' => 'default',
+      'title' => $title,
+      'link' => ['uri' => $uri],
+    ]);
+    $shortcut->save();
+    \Drupal::logger('spotify_showcase')->notice('Created shortcut: @title', [
+      '@title' => $title,
+    ]);
+  }
 
   // Create Spotify Artists.
   $spotify_artists = [
@@ -75,7 +77,10 @@ function spotify_showcase_install(): void {
       ->getStorage('spotify_artist')
       ->create($values);
     $spotify_artist->save();
-    \Drupal::logger('spotify_showcase')->notice('Created default Spotify Artist: @name', ['@name' => $page_title]);
+    \Drupal::logger('spotify_showcase')->notice('Created Spotify Artist: @name (@spotify_id)', [
+      '@name' => $page_title,
+      '@spotify_id' => $spotify_id,
+    ]);
   }
 
 }
