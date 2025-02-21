@@ -18,9 +18,9 @@ class SpotifyArtistForm extends ContentEntityForm {
     $is_new = $result === SAVED_NEW;
 
     // Show success message.
-    $this->messenger()->addStatus($this->t("%action Spotify Artist %label.", [
+    $this->messenger()->addStatus($this->t("%action Spotify Artist %page_title.", [
       '%action' => $is_new ? 'Created' : 'Updated',
-      '%label' => $this->entity->toLink()->toString(),
+      '%page_title' => $this->entity->toLink()->toString(),
     ]));
 
     // Redirect the user depending on whether the entity is new.
@@ -51,7 +51,7 @@ class SpotifyArtistForm extends ContentEntityForm {
 
     // Check if the limit (20) is exceeded.
     if ($total >= 20) {
-      $form_state->setErrorByName('label', $this->t('You cannot create more than 20 Spotify Artists.'));
+      $form_state->setErrorByName('page_title', $this->t('You cannot create more than 20 Spotify Artists.'));
     }
 
     return $entity;

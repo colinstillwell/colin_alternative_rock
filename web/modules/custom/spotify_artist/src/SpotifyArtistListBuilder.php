@@ -38,7 +38,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    */
   public function buildHeader() {
     $header['id'] = $this->t('ID');
-    $header['label'] = $this->t('Label');
+    $header['page_title'] = $this->t('Page Title');
     $header['spotify_id'] = $this->t('Spotify ID');
     return $header + parent::buildHeader();
   }
@@ -49,7 +49,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity) {
     /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
     $row['id'] = $entity->id();
-    $row['label'] = $entity->toLink();
+    $row['page_title'] = $entity->toLink();
     $row['spotify_id'] = $entity->getSpotifyId();
 
     return $row + parent::buildRow($entity);
