@@ -1,6 +1,6 @@
 services:
   spotify_api.service:
-    class: 'Drupal\spotify_api\SpotifyApiService'
+    class: 'Drupal\spotify_api\Service\SpotifyApiService'
     arguments:
       [
         '@state',

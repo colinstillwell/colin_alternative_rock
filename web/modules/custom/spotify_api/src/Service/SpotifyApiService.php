@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\spotify_api;
+namespace Drupal\spotify_api\Service;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
