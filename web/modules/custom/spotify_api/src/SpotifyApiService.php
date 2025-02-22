@@ -103,8 +103,8 @@ final class SpotifyApiService {
       $response = $this->httpClient->request($method, $url, $options);
       $data = json_decode($response->getBody()->getContents(), TRUE);
 
-      if (json_last_error() !== JSON_ERROR_NONE) {
-        throw new \RuntimeException('JSON decoding error: ' . json_last_error_msg());
+      if (!is_array($data)) {
+        throw new \RuntimeException('Unexpected JSON response format.');
       }
 
       return $data;
@@ -124,8 +124,18 @@ final class SpotifyApiService {
   protected function getAccessToken(): string {
     $token_data = $this->state->get('spotify_api.access_token', []);
 
-    // Check if the token exists and has not expired.
-    if (!empty($token_data['access_token']) && $token_data['expires'] > time()) {
+    // Ensure $token_data is an array.
+    if (!is_array($token_data)) {
+      $token_data = [];
+    }
+
+    // Validate expected keys and types.
+    if (
+        isset($token_data['access_token'], $token_data['expires']) &&
+        is_string($token_data['access_token']) &&
+        is_int($token_data['expires']) &&
+        $token_data['expires'] > time()
+    ) {
       return $token_data['access_token'];
     }
 
@@ -147,14 +157,14 @@ final class SpotifyApiService {
     $client_id = $config->get('client_id');
     $client_secret = $config->get('client_secret');
 
-    if (empty($client_id) || empty($client_secret)) {
-      throw new \RuntimeException('Spotify API credentials are missing.');
+    if (!is_string($client_id) || !is_string($client_secret) || $client_id === '' || $client_secret === '') {
+      throw new \RuntimeException('Spotify API credentials are missing or invalid.');
     }
 
     $options = [
       'form_params' => ['grant_type' => 'client_credentials'],
       'headers' => [
-        'Authorization' => 'Basic ' . base64_encode("{$client_id}:{$client_secret}"),
+        'Authorization' => 'Basic ' . base64_encode($client_id . ':' . $client_secret),
         'Content-Type' => 'application/x-www-form-urlencoded',
         'Accept' => 'application/json',
       ],
@@ -162,7 +172,7 @@ final class SpotifyApiService {
 
     $data = $this->request('POST', 'https://accounts.spotify.com/api/token', $options);
 
-    if (empty($data['access_token']) || empty($data['expires_in'])) {
+    if (!is_array($data) || empty($data['access_token']) || empty($data['expires_in']) || !is_string($data['access_token']) || !is_int($data['expires_in'])) {
       throw new \RuntimeException('Spotify API token response missing expected keys.');
     }
 

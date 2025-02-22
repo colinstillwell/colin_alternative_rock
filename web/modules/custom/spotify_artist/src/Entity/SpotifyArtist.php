@@ -237,14 +237,16 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getSpotifyId(): string {
-    return $this->get('spotify_id')->value;
+    $value = $this->get('spotify_id')->value;
+    return is_string($value) ? $value : '';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getArtistName(): string {
-    return $this->get('artist_name')->value;
+    $value = $this->get('artist_name')->value;
+    return is_string($value) ? $value : '';
   }
 
   /**
@@ -265,29 +267,37 @@ class SpotifyArtist extends ContentEntityBase {
    */
   public function getArtistGenres(): string {
     $genres = $this->get('artist_genres')->getValue();
-    $genre_list = array_map(fn($genre) => $genre['value'], $genres);
-    return implode(', ', $genre_list);
+
+    if (!is_array($genres)) {
+      return '';
+    }
+
+    $genre_list = array_map(fn(array $genre) => $genre['value'] ?? '', $genres);
+    return implode(', ', array_filter($genre_list));
   }
 
   /**
    * {@inheritdoc}
    */
   public function getArtistFollowers(): int {
-    return (int) $this->get('artist_followers')->value;
+    $value = $this->get('artist_followers')->value;
+    return is_numeric($value) ? (int) $value : 0;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getSpotifyUrl(): string {
-    return $this->get('spotify_url')->value;
+    $value = $this->get('spotify_url')->value;
+    return is_string($value) ? $value : '';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getArtistPopularity(): int {
-    return (int) $this->get('artist_popularity')->value;
+    $value = $this->get('artist_popularity')->value;
+    return is_numeric($value) ? (int) $value : 0;
   }
 
   /**
