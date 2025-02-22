@@ -75,7 +75,7 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
 
     // Add each artist to the list of items to display.
     foreach ($artists as $artist) {
-      /** @var \Drupal\spotify_artist\SpotifyArtistInterface $artist */
+      /** @var \Drupal\spotify_artist\Entity\SpotifyArtistInterface $artist */
       $artist_name = $artist->getArtistName();
 
       // If the artist has no name, skip it.

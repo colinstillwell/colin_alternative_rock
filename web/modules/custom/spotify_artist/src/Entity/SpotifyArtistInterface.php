@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\spotify_artist;
+namespace Drupal\spotify_artist\Entity;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 
