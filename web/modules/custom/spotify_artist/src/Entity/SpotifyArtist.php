@@ -291,14 +291,14 @@ class SpotifyArtist extends ContentEntityBase {
   }
 
   /**
-   * Update a field from Spotify.
+   * Updates a field with data fetched from Spotify.
    *
    * @param string $field_name
-   *   The target field name.
+   *   The field name to update.
    * @param array|string $field_value
-   *   The new field value.
+   *   The new value for the field.
    * @param bool $optional
-   *   Whether the value is optional.
+   *   Whether the field update is optional.
    */
   protected function updateFromSpotify(string $field_name, array|string $field_value, bool $optional = FALSE): void {
     $field_definitions = $this->getFieldDefinitions();
@@ -324,7 +324,7 @@ class SpotifyArtist extends ContentEntityBase {
 
     $spotify_id = $this->getSpotifyId();
     if (!empty($spotify_id)) {
-      // Fetch the artist data from the Spotify API.
+      // Fetch artist data from Spotify.
       $spotify_api_service = \Drupal::service('spotify_api.service');
       $artist_data = $spotify_api_service->fetchArtist($spotify_id);
 

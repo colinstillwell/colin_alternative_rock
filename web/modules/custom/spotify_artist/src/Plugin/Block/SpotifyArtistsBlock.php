@@ -47,7 +47,7 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
-    // Drupal core does this, so lets trust it for now.
+    // Drupal core does this, so let's trust it for now.
     // @phpstan-ignore-next-line
     return new static(
       $configuration,

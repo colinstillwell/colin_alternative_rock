@@ -19,31 +19,52 @@ final class SpotifyApiService {
 
   /**
    * The state system.
+   *
+   * @var \Drupal\Core\State\StateInterface
    */
   protected StateInterface $state;
 
   /**
    * The configuration object factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected ConfigFactoryInterface $configFactory;
 
   /**
    * The logger channel.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
    */
   protected LoggerChannelInterface $logger;
 
   /**
    * The messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
    * The client for sending HTTP requests.
+   *
+   * @var \GuzzleHttp\ClientInterface
    */
   protected ClientInterface $httpClient;
 
   /**
    * Constructs the Spotify API service.
+   *
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state system.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
+   *   The configuration factory.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
+   *   The logger factory.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
+   * @param \GuzzleHttp\ClientInterface $httpClient
+   *   The HTTP client for making requests.
    */
   public function __construct(
     StateInterface $state,
@@ -60,7 +81,22 @@ final class SpotifyApiService {
   }
 
   /**
-   * Sends an HTTP request and returns decoded JSON response.
+   * Sends an HTTP request and returns the decoded JSON response.
+   *
+   * @param string $method
+   *   The HTTP method (GET, POST, etc.).
+   * @param string $url
+   *   The request URL.
+   * @param array $options
+   *   Optional request options.
+   *
+   * @return array
+   *   The decoded JSON response.
+   *
+   * @throws \RuntimeException
+   *   If the request fails or JSON decoding errors occur.
+   * @throws \GuzzleHttp\Exception\RequestException
+   *   If the request encounters an error.
    */
   protected function request(string $method, string $url, array $options = []): array {
     try {
@@ -81,6 +117,9 @@ final class SpotifyApiService {
 
   /**
    * Gets the access token for the Spotify API.
+   *
+   * @return string
+   *   The Spotify API access token.
    */
   protected function getAccessToken(): string {
     $token_data = $this->state->get('spotify_api.access_token', []);
@@ -95,7 +134,13 @@ final class SpotifyApiService {
   }
 
   /**
-   * Gets a new access token for the Spotify API.
+   * Requests a new access token for the Spotify API.
+   *
+   * @return string
+   *   A new Spotify API access token.
+   *
+   * @throws \RuntimeException
+   *   If API credentials are missing or the token request fails.
    */
   protected function getNewAccessToken(): string {
     $config = $this->configFactory->get('spotify_api.settings');
@@ -133,6 +178,12 @@ final class SpotifyApiService {
 
   /**
    * Fetches artist data from the Spotify API.
+   *
+   * @param string $spotify_id
+   *   The Spotify artist ID.
+   *
+   * @return array
+   *   The artist data from Spotify API.
    */
   public function fetchArtist(string $spotify_id): array {
     try {

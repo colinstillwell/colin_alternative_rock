@@ -6,7 +6,7 @@ use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Form controller for the entity edit forms.
+ * Form controller for editing a Spotify Artist entity.
  */
 class SpotifyArtistEditForm extends ContentEntityForm {
 

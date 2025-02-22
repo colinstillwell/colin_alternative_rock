@@ -53,6 +53,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
     $header['artist_genres'] = $this->t('Genres');
     $header['artist_popularity'] = $this->t('Popularity');
     $header['artist_followers'] = $this->t('Followers');
+
     return $header + parent::buildHeader();
   }
 

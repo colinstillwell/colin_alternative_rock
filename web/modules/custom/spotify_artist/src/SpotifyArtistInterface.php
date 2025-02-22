@@ -10,10 +10,10 @@ use Drupal\Core\Entity\ContentEntityInterface;
 interface SpotifyArtistInterface extends ContentEntityInterface {
 
   /**
-   * Gets the Spotify Artist id.
+   * Gets the Spotify Artist ID.
    *
    * @return string
-   *   Id of the Spotify Artist.
+   *   The unique Spotify ID of the artist.
    */
   public function getSpotifyId();
 
@@ -21,7 +21,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * Gets the Spotify Artist name.
    *
    * @return string
-   *   Name of the Spotify Artist.
+   *   The name of the Spotify Artist.
    */
   public function getArtistName();
 
@@ -32,7 +32,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    *   The image style to use.
    *
    * @return string
-   *   Image of the Spotify Artist.
+   *   The image URL of the Spotify Artist.
    */
   public function getArtistImage($image_style);
 
@@ -40,31 +40,31 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * Gets the Spotify Artist genres.
    *
    * @return string
-   *   Genres of the Spotify Artist.
+   *   A comma-separated string of genres associated with the artist.
    */
   public function getArtistGenres();
 
   /**
-   * Gets the Spotify Artist followers.
+   * Gets the Spotify Artist followers count.
    *
    * @return int
-   *   Number of followers of the Spotify Artist.
+   *   The number of followers the Spotify Artist has.
    */
   public function getArtistFollowers();
 
   /**
-   * Gets the Spotify Artist url.
+   * Gets the Spotify Artist URL.
    *
    * @return string
-   *   URL of the Spotify Artist.
+   *   The direct Spotify URL for this artist.
    */
   public function getSpotifyUrl();
 
   /**
-   * Gets the Spotify Artist popularity.
+   * Gets the Spotify Artist popularity score.
    *
    * @return int
-   *   Popularity of the Spotify Artist.
+   *   The popularity of the Spotify Artist (0-100).
    */
   public function getArtistPopularity();
 
