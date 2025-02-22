@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {}
+name: spotify_artist_160
+label: 'Spotify Artist (160x160)'
+effects:
+  - id: image_scale_and_crop
+    data:
+      width: 160
+      height: 160
+    weight: 0

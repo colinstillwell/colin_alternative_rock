@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {}
+name: spotify_artist_640
+label: 'Spotify Artist (640x640)'
+effects:
+  - id: image_scale_and_crop
+    data:
+      width: 640
+      height: 640
+    weight: 0

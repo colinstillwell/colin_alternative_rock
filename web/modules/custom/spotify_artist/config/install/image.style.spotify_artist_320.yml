@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {}
+name: spotify_artist_320
+label: 'Spotify Artist (320x320)'
+effects:
+  - id: image_scale_and_crop
+    data:
+      width: 320
+      height: 320
+    weight: 0
