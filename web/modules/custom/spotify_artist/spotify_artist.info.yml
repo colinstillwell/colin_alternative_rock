@@ -4,6 +4,9 @@ type: module
 package: 'Custom'
 core_version_requirement: ^11
 dependencies:
+  - drupal:block
+  - drupal:image
+  - drupal:imagecache_external
   - drupal:spotify_api
   - drupal:text
-  - drupal:imagecache_external
+  - drupal:user
