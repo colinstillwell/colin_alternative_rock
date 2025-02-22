@@ -3,28 +3,12 @@ description: 'Install with essential modules, settings and configurations for th
 type: profile
 core_version_requirement: ^11
 install:
-  - drupal:spotify_artist
-  - drupal:big_pipe
-  - drupal:block
-  - drupal:breakpoint
-  - drupal:config
-  - drupal:datetime
   - drupal:dynamic_page_cache
-  - drupal:field
-  - drupal:file
-  - drupal:help
-  - drupal:image
-  - drupal:menu_ui
   - drupal:node
-  - drupal:options
   - drupal:page_cache
-  - drupal:path
   - drupal:shortcut
-  - drupal:text
+  - drupal:spotify_artist
   - drupal:toolbar
-  - drupal:user
-  - drupal:views
-  - drupal:views_ui
 
 themes:
   - olivero
