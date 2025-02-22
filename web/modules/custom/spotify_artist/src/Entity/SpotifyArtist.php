@@ -248,8 +248,14 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getArtistImage() {
-    return $this->get('artist_image')->value;
+  public function getArtistImage(string $image_style): string {
+    $render_array = [
+      '#theme' => 'imagecache_external',
+      '#uri' => $this->get('artist_image')->value,
+      '#style_name' => $image_style,
+      '#alt' => $this->getArtistName(),
+    ];
+    return \Drupal::service('renderer')->render($render_array);
   }
 
   /**
@@ -280,26 +286,6 @@ class SpotifyArtist extends ContentEntityBase {
    */
   public function getArtistPopularity() {
     return (int) $this->get('artist_popularity')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getRenderableArtistImage(string $image_style): array {
-    return [
-      '#theme' => 'imagecache_external',
-      '#uri' => $this->getArtistImage(),
-      '#style_name' => $image_style,
-      '#alt' => $this->getArtistName(),
-    ];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getRenderedArtistImage(string $image_style): string {
-    $render_array = $this->getRenderableArtistImage($image_style);
-    return \Drupal::service('renderer')->render($render_array);
   }
 
   /**

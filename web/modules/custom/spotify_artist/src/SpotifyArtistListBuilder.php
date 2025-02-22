@@ -61,7 +61,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
-    $row['artist_image'] = Markup::create($entity->getRenderedArtistImage('thumbnail'));
+    $row['artist_image'] = Markup::create($entity->getArtistImage('thumbnail'));
     $row['artist_name'] = $entity->getArtistName();
     $row['page_title'] = $entity->toLink();
     $row['artist_genres'] = $entity->getArtistGenres();

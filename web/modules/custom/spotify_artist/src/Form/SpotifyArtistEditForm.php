@@ -52,7 +52,7 @@ class SpotifyArtistEditForm extends ContentEntityForm {
       if ($field_name === 'artist_image') {
         /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
         $entity = $form_state->getFormObject()->getEntity();
-        $form[$field_name]['#suffix'] = $entity->getRenderedArtistImage('thumbnail');
+        $form[$field_name]['#suffix'] = $entity->getArtistImage('thumbnail');
       }
     }
 
