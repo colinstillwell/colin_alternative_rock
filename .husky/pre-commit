@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "🔍 Running PHPStan..."
+ddev exec php vendor/bin/phpstan analyse --configuration=phpstan.neon.dist || exit 1
+
+echo "🛠 Running PHPCS..."
+ddev exec php vendor/bin/phpcs --standard=.phpcs.xml.dist || exit 1
+
+echo "✅ All checks passed!"
