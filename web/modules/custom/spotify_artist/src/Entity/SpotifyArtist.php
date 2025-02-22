@@ -255,10 +255,10 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getArtistGenres(bool $as_string = FALSE): array|string {
+  public function getArtistGenres(): string {
     $genres = $this->get('artist_genres')->getValue();
     $genre_list = array_map(fn($genre) => $genre['value'], $genres);
-    return $as_string ? implode(', ', $genre_list) : $genre_list;
+    return implode(', ', $genre_list);
   }
 
   /**

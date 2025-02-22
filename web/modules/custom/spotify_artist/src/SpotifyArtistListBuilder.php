@@ -64,7 +64,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
     $row['artist_image'] = Markup::create($entity->getRenderedArtistImage('thumbnail'));
     $row['artist_name'] = $entity->getArtistName();
     $row['page_title'] = $entity->toLink();
-    $row['artist_genres'] = $entity->getArtistGenres(TRUE);
+    $row['artist_genres'] = $entity->getArtistGenres();
     $row['artist_popularity'] = $entity->getArtistPopularity();
     $row['artist_followers'] = $entity->getArtistFollowers();
 

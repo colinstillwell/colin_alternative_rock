@@ -58,13 +58,10 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
   /**
    * Gets the Spotify Artist genres.
    *
-   * @param bool $as_string
-   *   If TRUE, return a string. If FALSE, return an array.
-   *
-   * @return array|string
+   * @return string
    *   Genres of the Spotify Artist.
    */
-  public function getArtistGenres(bool $as_string = FALSE);
+  public function getArtistGenres(): string;
 
   /**
    * Gets the Spotify Artist followers.
