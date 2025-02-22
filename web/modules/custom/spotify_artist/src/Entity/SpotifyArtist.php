@@ -331,7 +331,7 @@ class SpotifyArtist extends ContentEntityBase {
       // Apply updates.
       $this->updateFromSpotify('artist_name', $artist_data['name'] ?? '');
       $this->updateFromSpotify('artist_image', !empty($artist_data['images']) ? $artist_data['images'][0]['url'] : '');
-      $this->updateFromSpotify('artist_genres', $artist_genres = $artist_data['genres'] ?? [], TRUE);
+      $this->updateFromSpotify('artist_genres', $artist_data['genres'] ?? [], TRUE);
       $this->updateFromSpotify('artist_followers', $artist_data['followers']['total'] ?? 0);
       $this->updateFromSpotify('spotify_url', $artist_data['external_urls']['spotify'] ?? '');
       $this->updateFromSpotify('artist_popularity', $artist_data['popularity'] ?? 0);
