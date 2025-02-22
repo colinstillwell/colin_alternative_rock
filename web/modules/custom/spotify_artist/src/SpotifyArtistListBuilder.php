@@ -4,6 +4,7 @@ namespace Drupal\spotify_artist;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
+use Drupal\Core\Render\Markup;
 
 /**
  * Defines a class to build a listing of Spotify Artist entities.
@@ -60,7 +61,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
-    $row['artist_image'] = $entity->getRenderableArtistImage('thumbnail', TRUE);
+    $row['artist_image'] = Markup::create($entity->getRenderedArtistImage('thumbnail'));
     $row['artist_name'] = $entity->getArtistName();
     $row['page_title'] = $entity->toLink();
     $row['artist_genres'] = $entity->getArtistGenres(TRUE);
