@@ -69,6 +69,10 @@
     "intelephense.diagnostics.enable": true,
     "intelephense.format.enable": false,
 
+    /* PHP: DocBlocker */
+    "php-docblocker.gap": true,
+    "php-docblocker.useShortNames": true,
+
     /* JavaScript */
     "javascript.validate.enable": true,
     "javascript.format.enable": true,

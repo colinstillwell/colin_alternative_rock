@@ -13,6 +13,7 @@
     "marcelovani.drupal-recipes-autocomplete-vscode",
     "usernamehw.errorlens",
     "shevaua.phpcs",
-    "sanderronde.phpstan-vscode"
+    "sanderronde.phpstan-vscode",
+    "neilbrayfield.php-docblocker"
   ]
 }
