@@ -224,11 +224,13 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function access($operation, ?AccountInterface $account = NULL, $return_as_object = FALSE) {
-    if ($operation === 'view') {
-      $result = AccessResult::allowedIfHasPermission($account, 'view spotify artist entities');
-      return $return_as_object ? $result : $result->isAllowed();
-    }
-    return parent::access($operation, $account, $return_as_object);
+    $result = match ($operation) {
+      'view' => AccessResult::allowedIf(!empty($account) && $account->hasPermission('view spotify artist entities'))
+        ->cachePerPermissions(),
+      default => parent::access($operation, $account, TRUE),
+    };
+
+    return $return_as_object ? $result : $result->isAllowed();
   }
 
   /**
@@ -293,22 +295,18 @@ class SpotifyArtist extends ContentEntityBase {
    *
    * @param string $field_name
    *   The target field name.
-   * @param string $field_value
+   * @param array|string $field_value
    *   The new field value.
    * @param bool $optional
    *   Whether the value is optional.
    */
-  protected function updateFromSpotify($field_name, $field_value, $optional = FALSE): void {
+  protected function updateFromSpotify(string $field_name, array|string $field_value, bool $optional = FALSE): void {
     $field_definitions = $this->getFieldDefinitions();
-    $field_label = $field_definitions[$field_name]->getLabel()->__toString();
+    $field_label = $field_definitions[$field_name]->getLabel();
+    $field_label = $field_label instanceof TranslatableMarkup ? $field_label->render() : (string) $field_label;
 
     if (!empty($field_value)) {
-      if (is_array($field_value)) {
-        $this->set($field_name, array_values($field_value));
-      }
-      else {
-        $this->set($field_name, $field_value);
-      }
+      $this->set($field_name, is_array($field_value) ? array_values($field_value) : (string) $field_value);
     }
     elseif ($optional) {
       \Drupal::messenger()->addWarning($this->t('No @label found from Spotify.', ['@label' => $field_label]));

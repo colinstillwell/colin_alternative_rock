@@ -47,6 +47,8 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
+    // Drupal core does this, so lets trust it for now.
+    // @phpstan-ignore-next-line
     return new static(
       $configuration,
       $plugin_id,
@@ -98,7 +100,7 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
       '#empty' => $this->t('None found.'),
       '#cache' => [
         'contexts' => ['user.roles'],
-        'tags' => $this->entityTypeManager->getDefinition('spotify_artist')->getListCacheTags(),
+        'tags' => ($definition = $this->entityTypeManager->getDefinition('spotify_artist')) ? $definition->getListCacheTags() : [],
       ],
     ];
   }
