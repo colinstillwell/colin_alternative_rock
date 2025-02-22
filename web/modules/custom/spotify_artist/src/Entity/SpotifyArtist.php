@@ -234,14 +234,14 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getSpotifyId() {
+  public function getSpotifyId(): string {
     return $this->get('spotify_id')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getArtistName() {
+  public function getArtistName(): string {
     return $this->get('artist_name')->value;
   }
 
@@ -270,21 +270,21 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getArtistFollowers() {
+  public function getArtistFollowers(): int {
     return (int) $this->get('artist_followers')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSpotifyUrl() {
+  public function getSpotifyUrl(): string {
     return $this->get('spotify_url')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getArtistPopularity() {
+  public function getArtistPopularity(): int {
     return (int) $this->get('artist_popularity')->value;
   }
 
@@ -298,7 +298,7 @@ class SpotifyArtist extends ContentEntityBase {
    * @param bool $optional
    *   Whether the value is optional.
    */
-  protected function updateFromSpotify($field_name, $field_value, $optional = FALSE) {
+  protected function updateFromSpotify($field_name, $field_value, $optional = FALSE): void {
     $field_definitions = $this->getFieldDefinitions();
     $field_label = $field_definitions[$field_name]->getLabel()->__toString();
 
@@ -321,7 +321,7 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function preSave(EntityStorageInterface $storage) {
+  public function preSave(EntityStorageInterface $storage): void {
     parent::preSave($storage);
 
     $spotify_id = $this->getSpotifyId();

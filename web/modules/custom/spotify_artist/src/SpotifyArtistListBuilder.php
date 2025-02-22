@@ -14,7 +14,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function render() {
+  public function render(): array {
     $build['table'] = parent::render();
 
     // Add a summary of the total number of Spotify Artists, for convenience.
@@ -32,7 +32,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function load() {
+  public function load(): array {
     $query = $this->getStorage()->getQuery()
       ->accessCheck(TRUE)
       ->sort('artist_popularity', 'DESC')
@@ -46,7 +46,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildHeader() {
+  public function buildHeader(): array {
     $header['artist_image'] = $this->t('Image');
     $header['artist_name'] = $this->t('Name');
     $header['page_title'] = $this->t('Page Title');
@@ -59,7 +59,7 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildRow(EntityInterface $entity) {
+  public function buildRow(EntityInterface $entity): array {
     /** @var \Drupal\spotify_artist\SpotifyArtistInterface $entity */
     $row['artist_image'] = Markup::create($entity->getArtistImage('thumbnail'));
     $row['artist_name'] = $entity->getArtistName();
