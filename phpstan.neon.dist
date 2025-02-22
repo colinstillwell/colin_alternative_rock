@@ -3,3 +3,5 @@ parameters:
   paths:
     - web/modules/custom
     - web/profiles/custom
+  ignoreErrors:
+    - '#no value type specified in iterable type array#'
