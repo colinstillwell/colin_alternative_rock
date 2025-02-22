@@ -15,7 +15,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return string
    *   The unique Spotify ID of the artist.
    */
-  public function getSpotifyId();
+  public function getSpotifyId(): string;
 
   /**
    * Gets the Spotify Artist name.
@@ -23,7 +23,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return string
    *   The name of the Spotify Artist.
    */
-  public function getArtistName();
+  public function getArtistName(): string;
 
   /**
    * Gets the Spotify Artist image.
@@ -34,7 +34,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return string
    *   The image URL of the Spotify Artist.
    */
-  public function getArtistImage($image_style);
+  public function getArtistImage(string $image_style): string;
 
   /**
    * Gets the Spotify Artist genres.
@@ -42,7 +42,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return string
    *   A comma-separated string of genres associated with the artist.
    */
-  public function getArtistGenres();
+  public function getArtistGenres(): string;
 
   /**
    * Gets the Spotify Artist followers count.
@@ -50,7 +50,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return int
    *   The number of followers the Spotify Artist has.
    */
-  public function getArtistFollowers();
+  public function getArtistFollowers(): int;
 
   /**
    * Gets the Spotify Artist URL.
@@ -58,7 +58,7 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return string
    *   The direct Spotify URL for this artist.
    */
-  public function getSpotifyUrl();
+  public function getSpotifyUrl(): string;
 
   /**
    * Gets the Spotify Artist popularity score.
@@ -66,6 +66,6 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
    * @return int
    *   The popularity of the Spotify Artist (0-100).
    */
-  public function getArtistPopularity();
+  public function getArtistPopularity(): int;
 
 }
