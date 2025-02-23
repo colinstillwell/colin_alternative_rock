@@ -42,16 +42,10 @@ ddev drush site-install spotify_showcase --site-name='Spotify Showcase' --accoun
 #### Step 4: View the Site and Login
 
 - Visit: https://colin-alternative-rock.ddev.site
-- The **Spotify Artists** block will display on the homepage without links to artist pages.
-- Login (username: admin, password: admin).
-- The **Spotify Artists** block will display on the homepage with links to artist pages.
+- The **Spotify Artists** block is automatically displayed on the homepage but will be empty until artists are added.
+- You can login at https://colin-alternative-rock.ddev.site/user/login (username: admin, password: admin).
 
 #### Step 5: Configure Spotify API
-
-**PLEASE NOTE:**
-The **Client ID** and **Client Secret** are preconfigured during site installation for convenience.
-You **do not** need to configure them manually unless you want to use your own credentials.
-While this is not best practice, it is an intentional decision to streamline testing, and I would not typically do it this way.
 
 Follow the instructions in the `spotify_api` module [README](https://github.com/colinstillwell/colin_alternative_rock/blob/master/web/modules/custom/spotify_api/README.md)
 
