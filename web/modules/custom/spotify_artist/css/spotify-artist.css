@@ -1,0 +1,24 @@
+.spotify-artist {
+  display: grid;
+  grid-template-columns: 160px auto;
+  gap: 1.5rem;
+}
+
+.spotify-artist__image img {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.spotify-artist__details {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .spotify-artist {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}

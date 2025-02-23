@@ -1,0 +1,26 @@
+<div class="spotify-artist">
+  {% if artist_image %}
+    <div class="spotify-artist__image">
+      {{ artist_image }}
+    </div>
+  {% endif %}
+  <div class="spotify-artist__details">
+    <h1 class="spotify-artist__name">{{ artist_name }}</h1>
+
+    {% if artist_genres %}
+      <p><strong>Genres:</strong> {{ artist_genres }}</p>
+    {% endif %}
+
+    {% if artist_followers %}
+      <p><strong>Followers:</strong> {{ artist_followers|number_format }}</p>
+    {% endif %}
+
+    {% if artist_popularity %}
+      <p><strong>Popularity:</strong> {{ artist_popularity }} / 100</p>
+    {% endif %}
+
+    {% if spotify_url %}
+      <p><a href="{{ spotify_url }}" target="_blank" rel="noopener noreferrer">View on Spotify</a></p>
+    {% endif %}
+  </div>
+</div>

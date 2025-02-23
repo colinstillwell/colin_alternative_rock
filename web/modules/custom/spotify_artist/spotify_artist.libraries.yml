@@ -2,3 +2,8 @@ spotify_artists_block:
   css:
     theme:
       css/spotify-artists-block.css: {}
+
+spotify_artist:
+  css:
+    theme:
+      css/spotify-artist.css: {}

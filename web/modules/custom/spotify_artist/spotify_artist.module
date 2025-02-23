@@ -4,3 +4,28 @@
  * @file
  * Contains hook implementations for the Spotify Artist module.
  */
+
+/**
+ * Implements hook_preprocess_HOOK() for spotify_artist templates.
+ */
+function spotify_artist_preprocess_spotify_artist(array &$variables): void {
+  // Get the Spotify Artist entity from the variables array.
+  /** @var \Drupal\spotify_artist\Entity\SpotifyArtist $entity */
+  $entity = $variables['elements']['#spotify_artist'];
+
+  // Set the variables for the template.
+  $variables['artist_name'] = $entity->getArtistName();
+  $variables['artist_genres'] = $entity->getArtistGenres();
+  $variables['artist_followers'] = $entity->getArtistFollowers();
+  $variables['artist_popularity'] = $entity->getArtistPopularity();
+  $variables['artist_image'] = [
+    '#theme' => 'imagecache_external',
+    '#uri' => $entity->getArtistImage(),
+    '#style_name' => 'spotify_artist_160',
+    '#alt' => $entity->getArtistName(),
+  ];
+  $variables['spotify_url'] = $entity->getSpotifyUrl();
+
+  // Attach libraries.
+  $variables['#attached']['library'][] = 'spotify_artist/spotify_artist';
+}
