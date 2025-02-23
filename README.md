@@ -8,10 +8,12 @@ A Drupal 11 project implementing custom modules for Spotify API integration.
 - 📦 [Manual Module Installation](#manual-module-installation)
 - 📝 [Notes](#notes)
   - [Spotify API: Data Fetching Approach](#spotify-api-data-fetching-approach)
-  - [Conventional Commits](#conventional-commits)
-  - [Coding Standards](#coding-standards)
-  - [Recipes](#recipes)
+  - [Ordering](#ordering)
+  - [Path Alias](#path-alias)
   - [Profile](#profile)
+  - [Recipes](#recipes)
+  - [Coding Standards](#coding-standards)
+  - [Conventional Commits](#conventional-commits)
 
 ## Quick Start
 
@@ -118,11 +120,13 @@ Currently, Spotify Artists have canonical URLs in the format:
 
 I considered using either the Spotify ID or an aliased page title instead. Given the open-ended nature of the task, I retained the default path structure rather than implementing a custom aliasing system. Implementing a more user-friendly aliasing system would require additional time, which did not feel appropriate.
 
-#### Conventional Commits
+#### Profile
 
-All commits in this project are prefixed with [master]. This is because I have globally configured Conventional Commits to integrate with Jira. If no ticket ID is provided (as in this case), the prefix defaults to the name of the branch I am working on.
+The Spotify Showcase profile (`spotify_showcase`) is a custom installation profile that preconfigures the site with essential modules, settings, and configurations. It streamlines the installation process, ensuring the project is ready to use straight from the quick start.
 
-Conventional Commits help automate the creation of release notes, providing a structured approach to commit history.
+#### Recipes
+
+I explored Drupal Recipes but chose an installation profile (`spotify_showcase`) instead. Profiles run during site install, making them better for setting up a new project from scratch, while recipes are more suited for post-install changes.
 
 #### Coding Standards
 
@@ -136,10 +140,8 @@ To further enforce these standards, Husky is used to run automated checks before
 
 Files in the root directory, such as Node packages and dotfiles, help support this setup.
 
-#### Recipes
+#### Conventional Commits
 
-I explored Drupal Recipes but chose an installation profile (`spotify_showcase`) instead. Profiles run during site install, making them better for setting up a new project from scratch, while recipes are more suited for post-install changes.
+All commits in this project are prefixed with [master]. This is because I have globally configured Conventional Commits to integrate with Jira. If no ticket ID is provided (as in this case), the prefix defaults to the name of the branch I am working on.
 
-#### Profile
-
-The Spotify Showcase profile (`spotify_showcase`) is a custom installation profile that preconfigures the site with essential modules, settings, and configurations. It streamlines the installation process, ensuring the project is ready to use straight from the quick start.
+Conventional Commits help automate the creation of release notes, providing a structured approach to commit history.
