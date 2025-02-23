@@ -252,10 +252,18 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getArtistImage(string $image_style): string {
+  public function getArtistImage(): string {
+    $value = $this->get('artist_image')->value;
+    return is_string($value) ? $value : '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getRenderedArtistImage(string $image_style): string {
     $render_array = [
       '#theme' => 'imagecache_external',
-      '#uri' => $this->get('artist_image')->value,
+      '#uri' => $this->getArtistImage(),
       '#style_name' => $image_style,
       '#alt' => $this->getArtistName(),
     ];
