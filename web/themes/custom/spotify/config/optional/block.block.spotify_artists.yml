@@ -5,15 +5,16 @@ dependencies:
     - spotify_artist
     - system
   theme:
-    - olivero
-id: olivero_spotify_artists
-theme: olivero
+    - spotify
+id: spotify_artists
+theme: spotify
 region: content
-weight: -10
+weight: 0
+provider: null
 plugin: spotify_artists
 settings:
   id: spotify_artists
-  label: 'Spotify Artists'
+  label: Artists
   label_display: visible
   provider: spotify_artist
 visibility:
