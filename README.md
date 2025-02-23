@@ -11,6 +11,7 @@ A Drupal 11 project implementing custom modules for Spotify API integration.
   - [Ordering](#ordering)
   - [Path Alias](#path-alias)
   - [Profile](#profile)
+  - [Theming](#theming)
   - [Recipes](#recipes)
   - [Coding Standards](#coding-standards)
   - [Conventional Commits](#conventional-commits)
@@ -123,6 +124,14 @@ I considered using either the Spotify ID or an aliased page title instead. Given
 #### Profile
 
 The Spotify Showcase profile (`spotify_showcase`) is a custom installation profile that preconfigures the site with essential modules, settings, and configurations. It streamlines the installation process, ensuring the project is ready to use straight from the quick start.
+
+#### Theming
+
+For this project, I selected Radix, a component-based Drupal theme that includes Bootstrap 5, Sass, ES6, BrowserSync, and BiomeJS out of the box. I didn’t spend long choosing a base theme, as many options are available.
+
+To allow for future custom styling, I created a sub-theme (`spotify`) using a Radix starter kit. This approach ensures flexibility for modifications while keeping the base theme updatable.
+
+The Spotify Artist module includes minimal styling to demonstrate my understanding of Drupal theming, focusing on layout rather than extensive customisation.
 
 #### Recipes
 
