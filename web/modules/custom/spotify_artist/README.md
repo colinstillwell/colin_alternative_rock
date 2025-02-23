@@ -18,6 +18,18 @@ To check or adjust this setting, navigate to:
 - Fetches artist data from the Spotify API upon entity creation for better performance and offline access.
 - Ensures only users with the correct permissions can view artist detail pages.
 
+## Drush Commands
+
+The module provides a Drush command to create a set of predefined example Spotify Artists:
+
+```bash
+drush spotify-artist:create-examples
+# or
+drush spotify-artist:ce
+```
+
+This command will create a predefined list of 20 Spotify Artists with their respective Spotify IDs.
+
 ## Content Management
 
 Navigate to **Content > Spotify Artists** (`/admin/content/spotify-artists`) to manage Spotify Artists.

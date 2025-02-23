@@ -1,0 +1,11 @@
+services:
+  logger.channel.spotify_artist:
+    class: Drupal\Core\Logger\LoggerChannel
+    arguments: ['spotify_artist']
+
+  spotify_artist.service:
+    class: 'Drupal\spotify_artist\Service\SpotifyArtistService'
+    arguments:
+      - '@entity_type.manager'
+      - '@logger.channel.spotify_artist'
+      - '@messenger'

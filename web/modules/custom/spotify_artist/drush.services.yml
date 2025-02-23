@@ -1,0 +1,7 @@
+services:
+  spotify_artist.drush_commands:
+    class: 'Drupal\spotify_artist\Commands\SpotifyArtistDrushCommands'
+    arguments:
+      - '@spotify_artist.service'
+    tags:
+      - { name: drush.command }
