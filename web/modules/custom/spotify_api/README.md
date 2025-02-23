@@ -9,6 +9,18 @@ A custom Drupal module that provides API integration with Spotify, allowing othe
 - Ensures only users with the correct permissions can modify API settings.
 - Designed to be used by other modules, such as `spotify_artist`, to fetch artist data from the Spotify API.
 
+## Drush Commands
+
+The module provides a Drush command to update Spotify API credentials:
+
+```bash
+drush spotify-api:update-credentials --client-id=your_client_id --client-secret=your_client_secret
+# or
+drush spotify-api:uc --client-id=your_client_id --client-secret=your_client_secret
+```
+
+This command updates the Spotify API credentials in Drupal’s configuration system.
+
 ## Configuration
 
 1. Navigate to **Configuration > Web Services > Spotify API** (`/admin/config/services/spotify-api`).

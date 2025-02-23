@@ -228,4 +228,23 @@ final class SpotifyApiService {
     return [];
   }
 
+  /**
+   * Updates the Spotify API credentials.
+   *
+   * @param string $client_id
+   *   The new client ID.
+   * @param string $client_secret
+   *   The new client secret.
+   */
+  public function updateCredentials(string $client_id, string $client_secret): void {
+    // Save the new credentials.
+    $this->configFactory->getEditable('spotify_api.settings')
+      ->set('client_id', $client_id)
+      ->set('client_secret', $client_secret)
+      ->save();
+
+    // Show a success message.
+    $this->messenger->addStatus($this->t('Spotify API credentials updated.'));
+  }
+
 }
