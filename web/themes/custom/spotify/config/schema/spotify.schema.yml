@@ -1,0 +1,5 @@
+# Schema for the configuration files of the spotify theme.
+
+spotify.settings:
+  type: theme_settings
+  label: 'spotify settings'

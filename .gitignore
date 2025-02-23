@@ -15,8 +15,10 @@
 /web/modules/README.txt
 /web/modules/contrib
 /web/profiles/README.txt
+/web/profiles/contrib
 /web/sites
 /web/themes/README.txt
+/web/themes/contrib
 /recipes
 
 # Composer
