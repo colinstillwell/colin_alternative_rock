@@ -3,7 +3,11 @@
   <description>PHP_CodeSniffer configuration for Drupal 11</description>
 
   <!-- Use Drupal coding standards -->
-  <rule ref="Drupal"/>
+  <rule ref="Drupal">
+    <!-- Exclude the rule that incorrectly flags "version" in info files -->
+    <!-- See: https://www.drupal.org/project/drupal/issues/3352384 -->
+    <exclude name="Drupal.InfoFiles.AutoAddedKeys"/>
+  </rule>
   <rule ref="DrupalPractice"/>
 
   <!-- Define file extensions to check -->

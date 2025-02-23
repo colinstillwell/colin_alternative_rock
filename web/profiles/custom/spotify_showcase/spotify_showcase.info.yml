@@ -1,5 +1,6 @@
 name: 'Spotify Showcase'
 description: 'Install with essential modules, settings and configurations for the Spotify Showcase.'
+version: 1.0.0
 type: profile
 core_version_requirement: ^11
 install:
