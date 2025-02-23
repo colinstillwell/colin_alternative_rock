@@ -6,7 +6,7 @@ A custom Drupal module that integrates with the Spotify API to manage and displa
 
 [Imagecache External](https://www.drupal.org/project/imagecache_external) is used to apply image styles to external artist images.
 
-By default, images should display correctly. However, if images do not appear, you may need to manually whitelist the domain `i.scdn.co` or disable whitelisting in the module settings.
+Whitelisting is disabled by default, so images should display correctly without additional configuration. If you have previously used this module, you may need to review your settings.
 
 To check or adjust this setting, navigate to:
 **Admin > Configuration > Media > Imagecache External** (`/admin/config/media/imagecache_external`).

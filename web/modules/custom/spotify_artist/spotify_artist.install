@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Spotify Artist module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function spotify_artist_install(): void {
+  // Disable the Imagecache External whitelist.
+  $config = \Drupal::configFactory()->getEditable('imagecache_external.settings');
+  $config->set('imagecache_external_use_whitelist', FALSE)->save();
+
+  // Log a warning message.
+  \Drupal::logger('spotify_artist')->warning('Imagecache External whitelist has been disabled.');
+}
