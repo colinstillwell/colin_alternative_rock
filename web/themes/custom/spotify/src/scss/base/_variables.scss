@@ -3,7 +3,7 @@
  * Variables should follow the $component-state-property-size formula for
  * consistent naming. Examples:
  * $nav-link-disabled-color
- * $modal-content-box-shadow-xs 
+ * $modal-content-box-shadow-xs
  *
  * Customization:
  * To customize Bootstrap variables:
@@ -14,3 +14,19 @@
  * $body-bg: #000;
  * $body-color: $gray-100;
  */
+
+// Spotify colours.
+$spotify-green: #1db954;
+$spotify-grey-dark: #131313;
+$spotify-grey-light: #2b2a2b;
+$spotify-white: #ffffff;
+
+// Base.
+$dark: $spotify-grey-dark;
+$body-bg: $spotify-grey-light;
+$body-color: $spotify-white;
+$primary: $spotify-green;
+
+// Links.
+$link-color: $spotify-green;
+$link-decoration: none;

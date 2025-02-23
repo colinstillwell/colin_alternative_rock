@@ -5,7 +5,7 @@
   columns: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 480px) {
   .spotify-artists-block ul {
     columns: 2;
   }
@@ -13,5 +13,4 @@
 
 .spotify-artists-block li {
   break-inside: avoid;
-  margin-bottom: 0.5rem;
 }
