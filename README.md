@@ -1,4 +1,4 @@
-# Spotify Showcase for CACI Digital Experience (formerly Cyber-Duck)
+# Spotify Showcase
 
 A Drupal 11 project implementing custom modules for Spotify API integration.
 
