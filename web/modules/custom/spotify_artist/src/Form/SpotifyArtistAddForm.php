@@ -17,7 +17,7 @@ class SpotifyArtistAddForm extends ContentEntityForm {
     $result = parent::save($form, $form_state);
 
     // Show success message.
-    $this->messenger()->addStatus($this->t("Created Spotify Artist %page_title.", [
+    $this->messenger()->addStatus($this->t('Created Spotify Artist %page_title.', [
       '%page_title' => $this->entity->toLink()->toString(),
     ]));
 
