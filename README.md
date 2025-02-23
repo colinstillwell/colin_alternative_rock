@@ -107,6 +107,17 @@ Artist data is fetched once when the entity is created and stored for future use
 
 Fetching data on page load provides real-time updates but introduces performance and reliability issues. By storing artist data in an entity, the project ensures fast page loads, resilience to API failures, and full control over when updates occur. Given more time, I would introduce an automated update mechanism, such as refreshing data if it hasn’t been updated recently or running scheduled updates via a cron job, to keep artist information more up to date.
 
+#### Ordering
+
+I decided to order the Spotify Artists based on popularity, then followers, then name. Since the task is open-ended in some areas, I chose this ordering based on what I felt provided the best user experience. I did consider adding an ordering mechanism where administrators could manually define the sort order, but the extra time required did not feel appropriate.
+
+#### Path Alias
+
+Currently, Spotify Artists have canonical URLs in the format:
+`/spotify-artist/{spotify_artist}`, where `{spotify_artist}` is the entity ID.
+
+I considered using either the Spotify ID or an aliased page title instead. Given the open-ended nature of the task, I retained the default path structure rather than implementing a custom aliasing system. Implementing a more user-friendly aliasing system would require additional time, which did not feel appropriate.
+
 #### Conventional Commits
 
 All commits in this project are prefixed with [master]. This is because I have globally configured Conventional Commits to integrate with Jira. If no ticket ID is provided (as in this case), the prefix defaults to the name of the branch I am working on.
