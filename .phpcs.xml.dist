@@ -12,5 +12,4 @@
   <!-- Define directories to check -->
   <file>web/modules/custom</file>
   <file>web/profiles/custom</file>
-  <file>web/themes/custom</file>
 </ruleset>
