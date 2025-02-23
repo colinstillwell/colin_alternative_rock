@@ -11,5 +11,5 @@ install:
   - drupal:toolbar
 
 themes:
-  - olivero
+  - spotify
   - claro
