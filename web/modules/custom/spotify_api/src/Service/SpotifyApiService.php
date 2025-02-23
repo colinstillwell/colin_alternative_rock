@@ -4,7 +4,6 @@ namespace Drupal\spotify_api\Service;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -59,8 +58,8 @@ final class SpotifyApiService {
    *   The state system.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
-   *   The logger factory.
+   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
+   *   The logger channel.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
    * @param \GuzzleHttp\ClientInterface $httpClient
@@ -69,13 +68,13 @@ final class SpotifyApiService {
   public function __construct(
     StateInterface $state,
     ConfigFactoryInterface $configFactory,
-    LoggerChannelFactoryInterface $loggerFactory,
+    LoggerChannelInterface $logger,
     MessengerInterface $messenger,
     ClientInterface $httpClient,
   ) {
     $this->state = $state;
     $this->configFactory = $configFactory;
-    $this->logger = $loggerFactory->get('spotify_api');
+    $this->logger = $logger;
     $this->messenger = $messenger;
     $this->httpClient = $httpClient;
   }

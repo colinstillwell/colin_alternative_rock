@@ -1,11 +1,13 @@
 services:
+  logger.channel.spotify_api:
+    class: Drupal\Core\Logger\LoggerChannel
+    arguments: ['spotify_api']
+
   spotify_api.service:
     class: 'Drupal\spotify_api\Service\SpotifyApiService'
     arguments:
-      [
-        '@state',
-        '@config.factory',
-        '@logger.factory',
-        '@messenger',
-        '@http_client',
-      ]
+      - '@state'
+      - '@config.factory'
+      - '@logger.channel.spotify_api'
+      - '@messenger'
+      - '@http_client'
