@@ -1,0 +1,4 @@
+spotify_artists_block:
+  css:
+    theme:
+      css/spotify-artists-block.css: {}

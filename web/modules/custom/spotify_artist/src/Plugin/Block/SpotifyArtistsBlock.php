@@ -98,6 +98,12 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
       '#theme' => 'item_list',
       '#items' => $items,
       '#empty' => $this->t('None found.'),
+      '#attached' => [
+        'library' => [
+          'spotify_artist/spotify_artists_block',
+        ],
+      ],
+      '#attributes' => ['class' => ['spotify-artists-block']],
       '#cache' => [
         'contexts' => ['user.roles'],
         'tags' => ($definition = $this->entityTypeManager->getDefinition('spotify_artist')) ? $definition->getListCacheTags() : [],

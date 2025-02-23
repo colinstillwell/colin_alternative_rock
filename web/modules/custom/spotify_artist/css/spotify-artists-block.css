@@ -1,0 +1,17 @@
+.spotify-artists-block ul {
+  list-style: none;
+  padding: 0;
+  column-gap: 2rem;
+  columns: 1;
+}
+
+@media (min-width: 768px) {
+  .spotify-artists-block ul {
+    columns: 2;
+  }
+}
+
+.spotify-artists-block li {
+  break-inside: avoid;
+  margin-bottom: 0.5rem;
+}
