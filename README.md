@@ -8,6 +8,7 @@ A Drupal 11 project implementing custom modules for Spotify API integration.
 - 📦 [Manual Module Installation](#manual-module-installation)
 - 📝 [Notes](#notes)
   - [Spotify API: Data Fetching Approach](#spotify-api-data-fetching-approach)
+  - [Spotify API: Policy](#spotify-api-policy)
   - [Ordering](#ordering)
   - [Path Alias](#path-alias)
   - [Profile](#profile)
@@ -109,6 +110,24 @@ Artist data is fetched once when the entity is created and stored for future use
 ##### Conclusion
 
 Fetching data on page load provides real-time updates but introduces performance and reliability issues. By storing artist data in an entity, the project ensures fast page loads, resilience to API failures, and full control over when updates occur. Given more time, I would introduce an automated update mechanism, such as refreshing data if it hasn’t been updated recently or running scheduled updates via a cron job, to keep artist information more up to date.
+
+#### Spotify API: Policy
+
+On the [Web API documentation](https://developer.spotify.com/documentation/web-api/reference/get-an-artist), Spotify outlines important policy guidelines for developers integrating with their service.
+
+##### Spotify content may not be downloaded
+
+As covered in [Spotify API: Data Fetching Approach](#spotify-api-data-fetching-approach), I store artist metadata in a custom entity to improve performance and reduce reliance on live API requests. While this technically involves persisting Spotify data, it can be periodically refreshed, ensuring it remains accurate and aligned with API expectations. With more time, I would implement a cron job to handle these updates automatically.
+
+For artist images, I initially rendered them directly using the Spotify image URLs but opted to use [Imagecache External](https://www.drupal.org/project/imagecache_external) to apply Drupal image styles. While this results in temporary local storage, a cron job could be introduced to periodically clear and refresh cached images, ensuring compliance with Spotify’s intent. If needed, switching back to direct Spotify image URLs would be a simple adjustment.
+
+##### Keep visual content in its original form
+
+I made minor modifications to artist images, such as applying a circular mask, to demonstrate theming within a module rather than a theme. This could easily be reverted to ensure strict compliance if necessary.
+
+##### Ensure content attribution
+
+Each artist’s page includes a direct link to their official Spotify profile, ensuring proper attribution. However, the styling of this link could be refined to better adhere to Spotify’s [Design & Brand Guidelines](https://developer.spotify.com/documentation/design#using-our-content).
 
 #### Ordering
 
