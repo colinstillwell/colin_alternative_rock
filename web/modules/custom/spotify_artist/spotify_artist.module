@@ -49,6 +49,14 @@ function spotify_artist_preprocess_spotify_artist(array &$variables): void {
       'label' => t('View on Spotify'),
     ],
   ];
+  $variables['last_updated'] = [
+    '#type' => 'inline_template',
+    '#template' => '<strong>{{ label }}</strong> {{ time_ago }} ago',
+    '#context' => [
+      'label' => t('Last updated:'),
+      'time_ago' => \Drupal::service('date.formatter')->formatTimeDiffSince($entity->getChanged()),
+    ],
+  ];
 
   // Attach libraries.
   $variables['#attached']['library'][] = 'spotify_artist/spotify_artist';

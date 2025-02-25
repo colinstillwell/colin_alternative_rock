@@ -10,6 +10,10 @@
       <h1 class="spotify-artist__name">{{ artist_name }}</h1>
     {% endif %}
 
+    {% if last_updated %}
+      <p class="spotify-artist__last-updated"><small>{{ last_updated }}</small></p>
+    {% endif %}
+
     {% if artist_genres %}
       <div class="spotify-artist__genres">
         {{ artist_genres }}
