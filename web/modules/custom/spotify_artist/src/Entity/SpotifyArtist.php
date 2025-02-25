@@ -127,11 +127,6 @@ class SpotifyArtist extends ContentEntityBase {
         'weight' => 2,
       ])
       ->setDisplayConfigurable('form', FALSE)
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'string',
-        'weight' => 2,
-      ])
       ->setDisplayConfigurable('view', FALSE);
 
     $fields['artist_image'] = BaseFieldDefinition::create('string')
@@ -144,11 +139,6 @@ class SpotifyArtist extends ContentEntityBase {
         'weight' => 3,
       ])
       ->setDisplayConfigurable('form', FALSE)
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'string',
-        'weight' => 3,
-      ])
       ->setDisplayConfigurable('view', FALSE);
 
     $fields['artist_genres'] = BaseFieldDefinition::create('string')
@@ -162,11 +152,6 @@ class SpotifyArtist extends ContentEntityBase {
         'weight' => 4,
       ])
       ->setDisplayConfigurable('form', FALSE)
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'string',
-        'weight' => 4,
-      ])
       ->setDisplayConfigurable('view', FALSE);
 
     $fields['artist_followers'] = BaseFieldDefinition::create('integer')
@@ -184,11 +169,6 @@ class SpotifyArtist extends ContentEntityBase {
         'weight' => 5,
       ])
       ->setDisplayConfigurable('form', FALSE)
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'number_integer',
-        'weight' => 5,
-      ])
       ->setDisplayConfigurable('view', FALSE);
 
     $fields['spotify_url'] = BaseFieldDefinition::create('string')
@@ -205,11 +185,6 @@ class SpotifyArtist extends ContentEntityBase {
         'weight' => 6,
       ])
       ->setDisplayConfigurable('form', FALSE)
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'link',
-        'weight' => 6,
-      ])
       ->setDisplayConfigurable('view', FALSE);
 
     $fields['artist_popularity'] = BaseFieldDefinition::create('integer')
@@ -227,11 +202,6 @@ class SpotifyArtist extends ContentEntityBase {
         'weight' => 7,
       ])
       ->setDisplayConfigurable('form', FALSE)
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'number_integer',
-        'weight' => 7,
-      ])
       ->setDisplayConfigurable('view', FALSE);
 
     return $fields;
