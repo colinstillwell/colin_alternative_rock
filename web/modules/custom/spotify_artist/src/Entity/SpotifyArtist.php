@@ -16,6 +16,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\spotify_artist\SpotifyArtistListBuilder;
+use Drupal\spotify_artist\SpotifyArtistViewBuilder;
 use Drupal\spotify_artist\Form\SpotifyArtistAddForm;
 use Drupal\spotify_artist\Form\SpotifyArtistEditForm;
 
@@ -39,6 +40,7 @@ use Drupal\spotify_artist\Form\SpotifyArtistEditForm;
   ],
   handlers: [
     'list_builder' => SpotifyArtistListBuilder::class,
+    'view_builder' => SpotifyArtistViewBuilder::class,
     'form' => [
       'default' => ContentEntityForm::class,
       'add' => SpotifyArtistAddForm::class,

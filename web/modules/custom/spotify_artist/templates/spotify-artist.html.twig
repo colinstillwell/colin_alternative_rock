@@ -1,35 +1,35 @@
 <div class="spotify-artist">
-  {% if artist_image %}
+  {% if elements.artist_image %}
     <div class="spotify-artist__image">
-      {{ artist_image }}
+      {{ elements.artist_image }}
     </div>
   {% endif %}
 
   <div class="spotify-artist__details">
-    {% if artist_name %}
-      <h1 class="spotify-artist__name">{{ artist_name }}</h1>
+    {% if elements.artist_name %}
+      <h1 class="spotify-artist__name">{{ elements.artist_name }}</h1>
     {% endif %}
 
-    {% if last_updated %}
-      <p class="spotify-artist__last-updated"><small>{{ last_updated }}</small></p>
+    {% if elements.last_updated %}
+      <p class="spotify-artist__last-updated"><small>{{ elements.last_updated }}</small></p>
     {% endif %}
 
-    {% if artist_genres %}
+    {% if elements.artist_genres %}
       <div class="spotify-artist__genres">
-        {{ artist_genres }}
+        {{ elements.artist_genres }}
       </div>
     {% endif %}
 
-    {% if artist_followers %}
-      <p class="spotify-artist__followers">{{ artist_followers }}</p>
+    {% if elements.artist_followers %}
+      <p class="spotify-artist__followers">{{ elements.artist_followers }}</p>
     {% endif %}
 
-    {% if artist_popularity %}
-      <p class="spotify-artist__popularity">{{ artist_popularity }}</p>
+    {% if elements.artist_popularity %}
+      <p class="spotify-artist__popularity">{{ elements.artist_popularity }}</p>
     {% endif %}
 
-    {% if artist_link %}
-      <p class="spotify-artist__link">{{ artist_link }}</p>
+    {% if elements.artist_link %}
+      <p class="spotify-artist__link">{{ elements.artist_link }}</p>
     {% endif %}
   </div>
 </div>
