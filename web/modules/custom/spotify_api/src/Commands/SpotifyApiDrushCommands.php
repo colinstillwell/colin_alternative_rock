@@ -19,7 +19,7 @@ final class SpotifyApiDrushCommands extends DrushCommands {
   protected SpotifyApiService $spotifyApiService;
 
   /**
-   * Constructs a new instance of the command.
+   * {@inheritdoc}
    *
    * @param \Drupal\spotify_api\Service\SpotifyApiService $spotifyApiService
    *   The Spotify API service.

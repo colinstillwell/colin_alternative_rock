@@ -19,7 +19,7 @@ final class SpotifyArtistDrushCommands extends DrushCommands {
   protected SpotifyArtistService $spotifyArtistService;
 
   /**
-   * Constructs a new instance of the command.
+   * {@inheritdoc}
    *
    * @param \Drupal\spotify_artist\Service\SpotifyArtistService $spotifyArtistService
    *   The Spotify Artist service.

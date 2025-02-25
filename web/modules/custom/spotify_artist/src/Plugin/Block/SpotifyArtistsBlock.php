@@ -36,6 +36,17 @@ class SpotifyArtistsBlock extends BlockBase implements ContainerFactoryPluginInt
 
   /**
    * {@inheritdoc}
+   *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin ID for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
+   * @param \Drupal\Core\Session\AccountInterface $currentUser
+   *   The current user.
    */
   public function __construct($configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, AccountInterface $currentUser) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
