@@ -364,7 +364,7 @@ class SpotifyArtist extends ContentEntityBase {
     $field_label = $field_definitions[$field_name]->getLabel();
     $field_label = $field_label instanceof TranslatableMarkup ? $field_label->render() : (string) $field_label;
 
-    if (!empty($field_value)) {
+    if (!empty($field_value) && $this->hasField($field_name)) {
       $this->set($field_name, is_array($field_value) ? array_values($field_value) : (string) $field_value);
     }
     elseif ($optional) {
