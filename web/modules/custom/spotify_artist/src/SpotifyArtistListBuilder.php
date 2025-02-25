@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -22,6 +23,13 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
   protected RendererInterface $renderer;
 
   /**
+   * The date formatter.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected DateFormatterInterface $dateFormatter;
+
+  /**
    * {@inheritdoc}
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
@@ -30,10 +38,13 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
    *   The entity storage class.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
+   *   The date formatter.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, RendererInterface $renderer) {
+  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, RendererInterface $renderer, DateFormatterInterface $date_formatter) {
     parent::__construct($entity_type, $storage);
     $this->renderer = $renderer;
+    $this->dateFormatter = $date_formatter;
   }
 
   /**
@@ -45,7 +56,8 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
     return new static(
       $entity_type,
       $container->get('entity_type.manager')->getStorage($entity_type->id()),
-      $container->get('renderer')
+      $container->get('renderer'),
+      $container->get('date.formatter')
     );
   }
 
@@ -113,10 +125,10 @@ class SpotifyArtistListBuilder extends EntityListBuilder {
     $row['artist_name'] = $entity->getArtistName();
     $row['page_title'] = $entity->toLink();
     $row['artist_genres'] = implode(', ', $entity->getArtistGenres());
-    $row['artist_popularity'] = $entity->getArtistPopularity();
-    $row['artist_followers'] = $entity->getArtistFollowers();
-    $row['created'] = $entity->getCreated();
-    $row['changed'] = $entity->getChanged();
+    $row['artist_popularity'] = number_format($entity->getArtistPopularity());
+    $row['artist_followers'] = number_format($entity->getArtistFollowers());
+    $row['created'] = $this->dateFormatter->format($entity->getCreated(), 'short');
+    $row['changed'] = $this->dateFormatter->format($entity->getChanged(), 'short');
 
     return $row + parent::buildRow($entity);
   }
