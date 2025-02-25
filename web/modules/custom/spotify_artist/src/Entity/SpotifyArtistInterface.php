@@ -18,6 +18,22 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
   public function getSpotifyId(): string;
 
   /**
+   * Gets the Spotify Artist created date/time.
+   *
+   * @return int
+   *   The created date/time of the Spotify Artist.
+   */
+  public function getCreated(): int;
+
+  /**
+   * Gets the Spotify Artist changed date/time.
+   *
+   * @return int
+   *   The changed date/time of the Spotify Artist.
+   */
+  public function getChanged(): int;
+
+  /**
    * Gets the Spotify Artist name.
    *
    * @return string

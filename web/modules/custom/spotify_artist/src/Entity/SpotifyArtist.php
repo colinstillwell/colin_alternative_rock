@@ -100,6 +100,23 @@ class SpotifyArtist extends ContentEntityBase {
       ->setDisplayConfigurable('form', FALSE)
       ->setDisplayConfigurable('view', FALSE);
 
+    $fields['created'] = BaseFieldDefinition::create('created')
+      ->setLabel(t('Created'))
+      ->setDescription(t('The time that the Spotify Artist was created. Not visible to users.'))
+      ->setRequired(TRUE)
+      ->setDisplayOptions('form', [
+        'weight' => 2,
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayConfigurable('view', FALSE);
+
+    $fields['changed'] = BaseFieldDefinition::create('changed')
+      ->setLabel(t('Changed'))
+      ->setDescription(t('The time that the Spotify Artist was last changed.'))
+      ->setRequired(TRUE)
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayConfigurable('view', FALSE);
+
     $fields['artist_name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Artist Name'))
       ->setDescription(t('The name of the artist. Retrieved automatically from Spotify.'))
@@ -244,6 +261,30 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
+  public function getCreated(): int {
+    if (!$this->hasField('created')) {
+      return 0;
+    }
+
+    $value = $this->get('created')->value;
+    return is_numeric($value) ? (int) $value : 0;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getChanged(): int {
+    if (!$this->hasField('changed')) {
+      return 0;
+    }
+
+    $value = $this->get('changed')->value;
+    return is_numeric($value) ? (int) $value : 0;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getArtistName(): string {
     $value = $this->get('artist_name')->value;
     return is_string($value) ? $value : '';
@@ -339,6 +380,15 @@ class SpotifyArtist extends ContentEntityBase {
    */
   public function preSave(EntityStorageInterface $storage): void {
     parent::preSave($storage);
+
+    // Set created and changed timestamps.
+    $current_time = \Drupal::time()->getRequestTime();
+    if ($this->isNew() && $this->hasField('created') && !$this->get('created')->value) {
+      $this->set('created', $current_time);
+    }
+    if ($this->hasField('changed')) {
+      $this->set('changed', $current_time);
+    }
 
     $spotify_id = $this->getSpotifyId();
     if (!empty($spotify_id)) {

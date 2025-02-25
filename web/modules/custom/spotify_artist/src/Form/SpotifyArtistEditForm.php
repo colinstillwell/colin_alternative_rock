@@ -35,6 +35,8 @@ class SpotifyArtistEditForm extends ContentEntityForm {
 
     // Disable fields that should not be edited manually.
     $disabled_fields = [
+      'created',
+      'changed',
       'artist_name',
       'artist_image',
       'artist_genres',
