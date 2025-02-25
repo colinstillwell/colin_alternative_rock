@@ -254,6 +254,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getSpotifyId(): string {
+    if (!$this->hasField('spotify_id')) {
+      return '';
+    }
+
     $value = $this->get('spotify_id')->value;
     return is_string($value) ? $value : '';
   }
@@ -286,6 +290,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getArtistName(): string {
+    if (!$this->hasField('artist_name')) {
+      return '';
+    }
+
     $value = $this->get('artist_name')->value;
     return is_string($value) ? $value : '';
   }
@@ -294,6 +302,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getArtistImage(): string {
+    if (!$this->hasField('artist_image')) {
+      return '';
+    }
+
     $value = $this->get('artist_image')->value;
     return is_string($value) ? $value : '';
   }
@@ -315,6 +327,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getArtistGenres(): string {
+    if (!$this->hasField('artist_genres')) {
+      return '';
+    }
+
     $genres = $this->get('artist_genres')->getValue();
 
     if (!is_array($genres)) {
@@ -329,6 +345,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getArtistFollowers(): int {
+    if (!$this->hasField('artist_followers')) {
+      return 0;
+    }
+
     $value = $this->get('artist_followers')->value;
     return is_numeric($value) ? (int) $value : 0;
   }
@@ -337,6 +357,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getSpotifyUrl(): string {
+    if (!$this->hasField('spotify_url')) {
+      return '';
+    }
+
     $value = $this->get('spotify_url')->value;
     return is_string($value) ? $value : '';
   }
@@ -345,6 +369,10 @@ class SpotifyArtist extends ContentEntityBase {
    * {@inheritdoc}
    */
   public function getArtistPopularity(): int {
+    if (!$this->hasField('artist_popularity')) {
+      return 0;
+    }
+
     $value = $this->get('artist_popularity')->value;
     return is_numeric($value) ? (int) $value : 0;
   }
