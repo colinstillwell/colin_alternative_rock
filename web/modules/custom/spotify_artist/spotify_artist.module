@@ -15,7 +15,10 @@ function spotify_artist_preprocess_spotify_artist(array &$variables): void {
 
   // Set the variables for the template.
   $variables['artist_name'] = $entity->getArtistName();
-  $variables['artist_genres'] = $entity->getArtistGenres();
+  $variables['artist_genres'] = [
+    '#theme' => 'item_list',
+    '#items' => $entity->getArtistGenres(),
+  ];
   $variables['artist_followers'] = $entity->getArtistFollowers();
   $variables['artist_popularity'] = $entity->getArtistPopularity();
   $variables['artist_image'] = [

@@ -313,19 +313,14 @@ class SpotifyArtist extends ContentEntityBase {
   /**
    * {@inheritdoc}
    */
-  public function getArtistGenres(): string {
+  public function getArtistGenres(): array {
     if (!$this->hasField('artist_genres')) {
-      return '';
+      return [];
     }
 
-    $genres = $this->get('artist_genres')->getValue();
+    $value = $this->get('artist_genres')->getValue();
 
-    if (!is_array($genres)) {
-      return '';
-    }
-
-    $genre_list = array_map(fn(array $genre) => $genre['value'] ?? '', $genres);
-    return implode(', ', array_filter($genre_list));
+    return is_array($value) ? array_column($value, 'value') : [];
   }
 
   /**

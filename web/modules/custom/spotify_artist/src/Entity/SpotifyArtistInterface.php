@@ -52,10 +52,10 @@ interface SpotifyArtistInterface extends ContentEntityInterface {
   /**
    * Gets the Spotify Artist genres.
    *
-   * @return string
-   *   A comma-separated string of genres associated with the artist.
+   * @return array
+   *   The genres of the Spotify Artist.
    */
-  public function getArtistGenres(): string;
+  public function getArtistGenres(): array;
 
   /**
    * Gets the Spotify Artist followers count.
