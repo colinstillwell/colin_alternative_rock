@@ -5,7 +5,9 @@
     </div>
   {% endif %}
   <div class="spotify-artist__details">
-    <h1 class="spotify-artist__name">{{ artist_name }}</h1>
+    {% if artist_name %}
+      <h1 class="spotify-artist__name">{{ artist_name }}</h1>
+    {% endif %}
 
     {% if artist_genres %}
       <p><strong>Genres:</strong> {{ artist_genres }}</p>
