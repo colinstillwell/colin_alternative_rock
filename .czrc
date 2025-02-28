@@ -1,0 +1,7 @@
+{
+	"path": "@digitalroute/cz-conventional-changelog-for-jira",
+	"jiraOptional": true,
+	"jiraLocation": "pre-type",
+	"jiraPrepend": "[",
+	"jiraAppend": "]"
+}

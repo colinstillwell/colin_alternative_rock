@@ -7,10 +7,16 @@ COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
 # Extract the branch name
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
-# Check if the commit message already contains a Jira-style ticket ID in brackets
-if echo "$COMMIT_MSG" | grep -qE "^\[[A-Z]+-[0-9]+\]"; then
-    echo "✅ Ticket ID already present in commit message."
+# Regex pattern to check for an existing ticket ID or branch prefix in brackets
+EXISTING_PREFIX_PATTERN="^\[[A-Za-z0-9/_-]+\]"
+
+# Check if the commit message already starts with a properly formatted bracketed prefix
+if echo "$COMMIT_MSG" | grep -qE "$EXISTING_PREFIX_PATTERN"; then
+    echo "✅ Commit message already contains a prefix."
 else
-    echo "⚠️  No ticket ID found in commit message. Using branch name as prefix: [$BRANCH_NAME]"
+    echo "⚠️  No prefix found in commit message. Using branch name as prefix: [$BRANCH_NAME]"
     echo "[$BRANCH_NAME] $COMMIT_MSG" > "$COMMIT_MSG_FILE"
 fi
+
+# Run commitlint using npx (ensures it works inside Git hooks)
+npx --no-install commitlint --edit "$COMMIT_MSG_FILE"
