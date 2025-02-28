@@ -170,7 +170,7 @@ Files in the root directory, such as Node packages and dotfiles, help support th
 
 #### Conventional Commits
 
-This repository follows the **Conventional Commits** specification to maintain a consistent commit history.
+This repository uses Conventional Commits to maintain a structured commit history, enabling automated release notes and changelogs.
 
 ##### Getting Started
 
@@ -196,7 +196,7 @@ The following development dependencies are installed:
 ###### Configuration Files
 
 | File                | Purpose                                                        |
-|---------------------|----------------------------------------------------------------|
+| ------------------- | -------------------------------------------------------------- |
 | `.commitlintrc`     | Configures commit message linting rules.                       |
 | `.czrc`             | Sets up Commitizen to use Jira-style commit messages.          |
 | `.husky/commit-msg` | Ensures commits are always prefixed with [TICKET] or [BRANCH]. |
@@ -209,5 +209,4 @@ Instead of using `git commit -m "message"`, use:
 git cz
 ```
 
-This will **prompt you with structured commit messages** to ensure they follow Conventional Commit rules.
-
+This will prompt you with structured commit messages to ensure they follow Conventional Commit rules.
