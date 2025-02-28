@@ -170,6 +170,44 @@ Files in the root directory, such as Node packages and dotfiles, help support th
 
 #### Conventional Commits
 
-All commits in this project are prefixed with [master]. This is because I have globally configured Conventional Commits to integrate with Jira. If no ticket ID is provided (as in this case), the prefix defaults to the name of the branch I am working on.
+This repository follows the **Conventional Commits** specification to maintain a consistent commit history.
 
-Conventional Commits help automate the creation of release notes, providing a structured approach to commit history.
+##### Getting Started
+
+Ensure you have ([Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating)) installed, then run:
+
+```bash
+nvm install
+npm install
+```
+
+##### What’s Configured?
+
+###### Installed Packages
+
+The following development dependencies are installed:
+
+- [`commitizen`](https://www.npmjs.com/package/commitizen)
+- [`@digitalroute/cz-conventional-changelog-for-jira`](https://www.npmjs.com/package/@digitalroute/cz-conventional-changelog-for-jira)
+- [`@commitlint/cli`](https://www.npmjs.com/package/@commitlint/cli)
+- [`@commitlint/config-conventional`](https://www.npmjs.com/package/@commitlint/config-conventional)
+- [`husky`](https://www.npmjs.com/package/husky)
+
+###### Configuration Files
+
+| File                | Purpose                                                        |
+|---------------------|----------------------------------------------------------------|
+| `.commitlintrc`     | Configures commit message linting rules.                       |
+| `.czrc`             | Sets up Commitizen to use Jira-style commit messages.          |
+| `.husky/commit-msg` | Ensures commits are always prefixed with [TICKET] or [BRANCH]. |
+
+##### How to Commit
+
+Instead of using `git commit -m "message"`, use:
+
+```bash
+git cz
+```
+
+This will **prompt you with structured commit messages** to ensure they follow Conventional Commit rules.
+
