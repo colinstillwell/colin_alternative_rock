@@ -5,91 +5,10 @@
     },
   ],
   "settings": {
-    /* Default Formatting */
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnType": false,
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file",
-    "editor.formatOnPaste": true,
-    "files.autoSave": "onFocusChange",
+    /* Override User Settings */
     "prettier.configPath": "./web/core/.prettierrc.json",
-
-    /* Editor */
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.detectIndentation": true,
-    "editor.autoIndent": "full",
-    "editor.rulers": [80],
-    "editor.renderWhitespace": "boundary",
-    "editor.wordWrap": "off",
-    "editor.wordWrapColumn": 80,
-    "breadcrumbs.enabled": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-
-    /* File Handling */
-    "files.associations": {
-      "*.inc": "php",
-      "*.module": "php",
-      "*.install": "php",
-      "*.theme": "php",
-      "*.profile": "php",
-      "*.tpl.php": "php",
-      "*.test": "php",
-      "*.php": "php",
-      "*.info": "ini",
-    },
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.restoreUndoStack": false,
-    "[php]": {
-      "editor.defaultFormatter": "valeryanm.vscode-phpsab",
-    },
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    },
-
-    /* PHPStan */
-    "phpstan.binPath": "./vendor/bin/phpstan",
     "phpstan.configFile": "./phpstan.neon.dist",
-
-    /* PHPCS */
-    "phpcs.enable": true,
-    "phpcs.executablePath": "./vendor/bin/phpcs",
-    "phpcs.standard": "./.phpcs.xml.dist",
-    "phpcs.ignorePatterns": ["**/vendor/**", "**/node_modules/**"],
-
-    /* PHP: Beautifier */
-    "phpsab.fixerEnable": true,
-    "phpsab.fixerArguments": [
-      "--extensions=inc,theme,install,module,profile,php,phtml",
-    ],
-
-    /* PHP: Intelephense */
     "intelephense.environment.includePaths": ["web/", "vendor/"],
-    "intelephense.diagnostics.enable": true,
-    "intelephense.format.enable": false,
-
-    /* PHP: DocBlocker */
-    "php-docblocker.gap": true,
-    "php-docblocker.useShortNames": true,
-
-    /* JavaScript */
-    "javascript.validate.enable": true,
-    "javascript.format.enable": true,
-    "eslint.format.enable": false,
-    "eslint.enable": true,
     "eslint.workingDirectories": ["./web"],
-
-    /* HTML */
-    "html.format.enable": true,
-    "html.format.wrapLineLength": 80,
-
-    /* CSS */
-    "css.validate": true,
-
-    /* ErrorLens */
-    "errorLens.enabled": true,
-    "errorLens.messageBackgroundMode": "message",
-    "errorLens.statusBarMessageEnabled": true,
   },
 }
