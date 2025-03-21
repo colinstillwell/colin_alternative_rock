@@ -6,7 +6,7 @@
   /* PHPStan */
   "phpstan.enabled": true,
   "phpstan.binPath": "./vendor/bin/phpstan",
-  "phpstan.configFile": "./web/core/phpstan.neon.dist",
+  "phpstan.configFile": "./phpstan.neon.dist",
 
   /* PHPCS */
   "phpcs.enable": true,
