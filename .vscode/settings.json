@@ -1,6 +1,7 @@
 {
   "prettier.configPath": "./web/core/.prettierrc.json",
   "phpstan.configFile": "./web/core/phpstan.neon.dist",
+  "phpcs.standard": "./web/core/phpcs.xml.dist",
   "intelephense.environment.includePaths": ["web/", "vendor/"],
   "eslint.workingDirectories": ["./web"]
 }
