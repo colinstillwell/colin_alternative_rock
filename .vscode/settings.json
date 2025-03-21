@@ -1,6 +1,39 @@
 {
+  /* Prettier */
+  "prettier.enable": true,
   "prettier.configPath": "./web/core/.prettierrc.json",
+
+  /* PHPStan */
+  "phpstan.enabled": true,
+  "phpstan.binPath": "./vendor/bin/phpstan",
   "phpstan.configFile": "./web/core/phpstan.neon.dist",
+
+  /* PHPCS */
+  "phpcs.enable": true,
+  "phpcs.executablePath": "./vendor/bin/phpcs",
+  "phpcs.standard": "./phpcs.xml.dist",
+  "phpcs.ignorePatterns": ["**/vendor/**", "**/node_modules/**"],
+
+  /* PHP: Beautifier */
+  "phpsab.fixerEnable": true,
+  "phpsab.fixerArguments": [
+    "--extensions=inc,theme,install,module,profile,php,phtml"
+  ],
+
+  /* PHP: Intelephense */
+  "intelephense.diagnostics.enable": true,
   "intelephense.environment.includePaths": ["web/", "vendor/"],
-  "eslint.workingDirectories": ["./web"]
+
+  /* JavaScript */
+  "javascript.validate.enable": true,
+  "javascript.format.enable": true,
+  "eslint.enable": true,
+  "eslint.workingDirectories": ["./web"],
+
+  /* HTML */
+  "html.format.enable": true,
+  "html.format.wrapLineLength": 80,
+
+  /* CSS */
+  "css.validate": true
 }
