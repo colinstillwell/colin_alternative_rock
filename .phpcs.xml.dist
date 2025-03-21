@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="Drupal Coding Standards">
+  <description>PHP_CodeSniffer configuration for Drupal 11</description>
+
+  <!-- Use Drupal coding standards -->
+  <rule ref="Drupal">
+    <!-- Exclude the rule that incorrectly flags "version" in info files -->
+    <!-- See: https://www.drupal.org/project/drupal/issues/3352384 -->
+    <exclude name="Drupal.InfoFiles.AutoAddedKeys"/>
+  </rule>
+  <rule ref="DrupalPractice"/>
+
+  <!-- Define file extensions to check -->
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,info,yml,phtml"/>
+
+  <!-- Define directories to check -->
+  <file>web/modules/custom</file>
+  <file>web/profiles/custom</file>
+</ruleset>
