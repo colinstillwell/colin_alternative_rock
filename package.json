@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "npm run install-husky && npm run install-commitizen",
-    "install-commitizen": "git config --local commitizen.path './node_modules/.bin/cz' && git config --local alias.cz '!npx cz'",
+    "install-commitizen": "git config --local commitizen.path './node_modules/.bin/cz'",
     "install-husky": "husky && git config core.hooksPath .husky"
   },
   "repository": {
@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/colinstillwell/colin_alternative_rock#readme",
   "devDependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "commitizen": "^4.3.1",
     "eslint": "^8.57.1",

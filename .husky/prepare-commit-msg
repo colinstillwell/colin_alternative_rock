@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# Define protected branch names (separated by space)
+# PROTECTED_BRANCH_NAMES="main master"
+
+# Extract the branch name
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if the current branch is protected
+if [ -n "$PROTECTED_BRANCH_NAMES" ]; then
+  for PROTECTED_BRANCH_NAME in $PROTECTED_BRANCH_NAMES; do
+    if [ "$BRANCH_NAME" = "$PROTECTED_BRANCH_NAME" ]; then
+      echo "❌ You are on the '$BRANCH_NAME' branch. Please create a new branch for your changes."
+      exit 1
+    fi
+  done
+fi
+
+# Proceed if the current branch is not protected
+exec < /dev/tty && ./node_modules/.bin/git-cz --hook

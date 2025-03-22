@@ -176,9 +176,22 @@ This repository uses Conventional Commits to maintain a structured commit histor
 
 Ensure you have ([Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating)) installed, then run:
 
-```bash
+```shell
 nvm install
 npm install
+```
+
+##### Optional
+
+When running `git commit`, it will often:
+
+- Start the Commitizen prompt, but forget your original commit message, and
+- Sometimes open your editor after the prompt finishes, asking you to re-confirm or rewrite the message.
+
+To avoid this confusion and make the commit process smoother, you can use `git cz` as a shortcut:
+
+```shell
+git config --local alias.cz '!npx cz'
 ```
 
 ##### What’s Configured?
@@ -200,13 +213,3 @@ The following development dependencies are installed:
 | `.commitlintrc`     | Configures commit message linting rules.                       |
 | `.czrc`             | Sets up Commitizen to use Jira-style commit messages.          |
 | `.husky/commit-msg` | Ensures commits are always prefixed with [TICKET] or [BRANCH]. |
-
-##### How to Commit
-
-Instead of using `git commit -m "message"`, use:
-
-```bash
-git cz
-```
-
-This will prompt you with structured commit messages to ensure they follow Conventional Commit rules.
