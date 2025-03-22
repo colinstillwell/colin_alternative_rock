@@ -158,11 +158,11 @@ I explored Drupal Recipes but chose an installation profile (`spotify_showcase`)
 
 #### Coding Standards
 
-The `colin_alternative_rock.code-workspace` file contains Visual Studio Code settings and recommended extensions to enforce Drupal coding standards. These settings are loosely based on [Drupal.org’s official standards](https://www.drupal.org/node/2918206), and demonstrate my understanding of best practices.
+The `.vscode` folder contains Visual Studio Code settings and recommended extensions to enforce Drupal coding standards. These settings are loosely based on [Drupal.org’s official standards](https://www.drupal.org/node/2918206), and demonstrate my understanding of best practices.
 
 I am aware that some of these settings would typically be configured per-user. I also have experience configuring this setup for PhpStorm, another widely used Drupal IDE.
 
-Additionally, this project includes PHPStan for static analysis and PHPCS for enforcing Drupal coding standards. Both tools are pre-configured in .phpstan.neon.dist and .phpcs.xml.dist, ensuring consistency with Drupal’s best practices.
+Additionally, this project includes PHPStan for static analysis and PHPCS for enforcing Drupal coding standards. Both tools are pre-configured in phpstan.neon.dist and phpcs.xml.dist, ensuring consistency with Drupal’s best practices.
 
 To further enforce these standards, Husky is used to run automated checks before commits, preventing coding standard violations from entering the repository.
 
