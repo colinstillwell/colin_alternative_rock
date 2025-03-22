@@ -12,10 +12,10 @@ EXISTING_PREFIX_PATTERN="^\[[A-Za-z0-9/_-]+\]"
 
 # Check if the commit message already starts with a properly formatted bracketed prefix
 if echo "$COMMIT_MSG" | grep -qE "$EXISTING_PREFIX_PATTERN"; then
-    echo "✅ Commit message already contains a prefix."
+  echo "✅ Commit message already contains a prefix."
 else
-    echo "⚠️  No prefix found in commit message. Using branch name as prefix: [$BRANCH_NAME]"
-    echo "[$BRANCH_NAME] $COMMIT_MSG" > "$COMMIT_MSG_FILE"
+  echo "⚠️  No prefix found in commit message. Using branch name as prefix: [$BRANCH_NAME]"
+  echo "[$BRANCH_NAME] $COMMIT_MSG" >"$COMMIT_MSG_FILE"
 fi
 
 # Run commitlint using npx (ensures it works inside Git hooks)

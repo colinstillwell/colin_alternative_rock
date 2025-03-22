@@ -6,7 +6,7 @@
 # Extract the branch name
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
-# Check if the current branch is protected
+# Stop if the current branch is protected
 if [ -n "$PROTECTED_BRANCH_NAMES" ]; then
   for PROTECTED_BRANCH_NAME in $PROTECTED_BRANCH_NAMES; do
     if [ "$BRANCH_NAME" = "$PROTECTED_BRANCH_NAME" ]; then
@@ -16,5 +16,17 @@ if [ -n "$PROTECTED_BRANCH_NAMES" ]; then
   done
 fi
 
-# Proceed if the current branch is not protected
-exec < /dev/tty && ./node_modules/.bin/git-cz --hook
+# Fetch the current commit message
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Regex pattern to check for a valid conventional commit (e.g. from cz)
+EXISTING_PREFIX_PATTERN="^([a-z]+)(\([^)]+\))?: .+"
+
+# Check if the commit message is already a valid conventional commit
+if echo "$COMMIT_MSG" | grep -qE "$EXISTING_PREFIX_PATTERN"; then
+  exit 0
+fi
+
+# Run Commitizen
+exec </dev/tty && ./node_modules/.bin/git-cz --hook
